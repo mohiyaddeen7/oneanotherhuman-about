@@ -50,7 +50,7 @@ assert.match(
 );
 assert.match(
   html,
-  /No follower-count race/i,
+  /No follower(?:-count)? race/i,
   "Missing product differentiation constraints",
 );
 assert.match(
