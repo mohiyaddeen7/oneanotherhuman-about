@@ -596,7 +596,7 @@
         min-height:34px;
         font-size:11px;
       }
-      .hero-photo { object-position:74% 42%; }
+      .hero-photo { object-position:center center; }
 
       .section { padding:44px 0; }
       .section-label { margin-bottom:11px; font-size:8.5px; }
@@ -678,7 +678,7 @@
       h1 { font-size:clamp(2.12rem,9.6vw,2.4rem); }
       .hero-sub { font-size:12.6px; }
       .hero-actions { margin-top:14px; }
-      .hero-photo { object-position:76% 40%; }
+      .hero-photo { object-position:center center; }
 
       .section { padding:40px 0; }
       .section-title { font-size:clamp(1.8rem,8.2vw,2.1rem); }
@@ -741,7 +741,10 @@
 
   <main id="top">
     <section class="hero">
-      <img class="hero-photo" src="https://images.unsplash.com/photo-1724028722169-42c94f20761c?auto=format&fit=crop&w=2200&q=82" alt="Two people sitting together at sunset" />
+      <picture>
+        <source media="(max-width:640px)" srcset="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&w=1200&q=82" />
+        <img class="hero-photo" src="https://images.unsplash.com/photo-1724028722169-42c94f20761c?auto=format&fit=crop&w=2200&q=82" alt="Friends spending time together" />
+      </picture>
       <div class="shell hero-inner">
         <div class="hero-copy">
           <h1>A social network<br class="hero-break" />for being understood.</h1>
