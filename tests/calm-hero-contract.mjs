@@ -68,8 +68,8 @@ assert.match(
 
 assert.match(
   hero,
-  /<picture[\s\S]*?<source[^>]+media=["']\(max-width:\s*640px\)["'][^>]+srcset=["'][^"']*photo-1491438590914-bc09fcaaf77a/i,
-  "Mobile hero should use a dedicated human-centered image source",
+  /<picture[\s\S]*?<source[^>]+media=["']\(max-width:\s*640px\)["'][^>]+srcset=["'][^"']*photo-1678892127659-22ead1fb3b0d/i,
+  "Mobile hero should use the dedicated vertical people image source",
 );
 assert.match(
   hero,
@@ -80,6 +80,18 @@ assert.match(
   html,
   /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-photo\s*\{[\s\S]*?object-position:\s*center\s+center/i,
   "Dedicated mobile hero source should use a stable centered crop",
+);
+
+
+assert.match(
+  hero,
+  /<picture>[\s\S]*?<source\s+media=["']\(max-width:640px\)["'][^>]*srcset=["'][^"']*photo-1678892127659-22ead1fb3b0d[^"']*["'][^>]*>[\s\S]*?<img[^>]*photo-1724028722169-42c94f20761c/i,
+  "Phones should use the dedicated vertical people photo while desktop keeps the existing hero image",
+);
+assert.match(
+  hero,
+  /photo-1678892127659-22ead1fb3b0d[^"']*fit=crop[^"']*crop=faces[^"']*w=1200[^"']*h=1600/i,
+  "Mobile hero source should request a portrait face-aware crop",
 );
 
 console.log("cinematic hero contract: pass");
