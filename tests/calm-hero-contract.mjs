@@ -56,13 +56,30 @@ assert.match(
 );
 assert.match(
   html,
-  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-photo\s*\{[\s\S]*?object-position:\s*74%\s+42%/i,
-  "Phone hero should keep the subjects right of the text and higher in frame",
+  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-photo\s*\{[\s\S]*?object-position:\s*center\s+center/i,
+  "Phone hero should center the dedicated mobile image source",
 );
 assert.match(
   html,
-  /@media\s*\(max-width:\s*480px\)[\s\S]*?\.hero-photo\s*\{[\s\S]*?object-position:\s*76%\s+40%/i,
-  "Narrow phones need a tighter portrait focal point",
+  /@media\s*\(max-width:\s*480px\)[\s\S]*?\.hero-photo\s*\{[\s\S]*?object-position:\s*center\s+center/i,
+  "Narrow phones should preserve the centered mobile source",
+);
+
+
+assert.match(
+  hero,
+  /<picture[\s\S]*?<source[^>]+media=["']\(max-width:\s*640px\)["'][^>]+srcset=["'][^"']*photo-1491438590914-bc09fcaaf77a/i,
+  "Mobile hero should use a dedicated human-centered image source",
+);
+assert.match(
+  hero,
+  /<img[^>]+src=["'][^"']*photo-1724028722169-42c94f20761c/i,
+  "Desktop hero source should remain unchanged",
+);
+assert.match(
+  html,
+  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-photo\s*\{[\s\S]*?object-position:\s*center\s+center/i,
+  "Dedicated mobile hero source should use a stable centered crop",
 );
 
 console.log("cinematic hero contract: pass");
