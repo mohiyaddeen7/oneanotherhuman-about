@@ -433,38 +433,152 @@
     }
     .photo-credit { max-width:760px; }
 
-    @media (max-width:900px) {
+    @media (max-width:1024px) {
+      .shell { width:min(var(--max), calc(100% - 32px)); }
+      .section { padding:82px 0; }
+      .hero { padding-top:64px; }
+      .hero-copy { padding-bottom:42px; }
+      .hero-photo-wrap { height:min(56vw, 500px); min-height:330px; }
+      .why-grid { gap:44px; }
+      .journey { grid-template-columns:repeat(7,minmax(0,1fr)); }
+      .journey-step { padding-right:8px; }
+      .journey-step + .journey-step { padding-left:10px; }
+      .feature-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px 22px; }
+      .future-row { grid-template-columns:132px 1fr auto; }
+    }
+
+    @media (max-width:768px) {
       .shell { width:min(var(--max), calc(100% - 28px)); }
+      .nav { min-height:62px; gap:14px; }
+      .brand { font-size:16px; white-space:nowrap; }
+      .nav-links { gap:10px; }
       .nav-links a:not(.nav-cta) { display:none; }
-      .hero { padding-top:58px; }
-      .hero-copy { padding-bottom:36px; }
-      .hero-photo-wrap { height:58vw; min-height:340px; }
+      .nav-cta { min-height:36px; padding:0 12px; font-size:10.5px; white-space:nowrap; }
+
+      .hero { padding-top:50px; }
+      .hero-copy { max-width:680px; padding:0 0 34px; }
+      h1 { font-size:clamp(3.2rem,11vw,5rem); }
+      .hero-sub { margin-top:20px; font-size:15px; }
+      .hero-photo-wrap { height:auto; min-height:0; aspect-ratio:4/3; }
+      .hero-photo { object-position:center 56%; }
+
+      .section { padding:68px 0; }
+      .section-title { font-size:clamp(2.35rem,8vw,3.7rem); }
+      .section-copy { margin-top:16px; font-size:13.5px; }
       .why-grid { grid-template-columns:1fr; gap:24px; }
-      .hand-note { justify-self:start; margin:10px 0 0; }
-      .journey { overflow-x:auto; grid-template-columns:repeat(7,150px); padding-bottom:8px; }
-      .feature-grid { grid-template-columns:repeat(2,1fr); }
+      .hand-note { justify-self:start; margin:8px 0 0; font-size:23px; }
+
+      .journey {
+        display:block;
+        grid-template-columns:1fr;
+        border-top:0;
+        overflow:visible;
+        margin-top:38px;
+        padding:0;
+      }
+      .journey-step,
+      .journey-step + .journey-step {
+        display:grid;
+        grid-template-columns:34px 1fr;
+        column-gap:10px;
+        min-height:0;
+        padding:0 0 30px 24px;
+        border-left:1px solid #817870;
+      }
+      .journey-step:last-child { border-left-color:transparent; padding-bottom:0; }
+      .journey-step::before { top:4px; left:-5px; }
+      .journey-step small {
+        grid-column:1;
+        grid-row:1 / span 2;
+        margin:2px 0 0;
+        font-size:10px;
+      }
+      .journey-step strong { grid-column:2; font-size:13px; }
+      .journey-step p { grid-column:2; margin:4px 0 0; font-size:11.5px; }
+
+      .platform-head { align-items:flex-start; flex-direction:column; gap:10px; margin-bottom:22px; }
+      .feature-grid { grid-template-columns:1fr; gap:34px; }
+      .feature-photo { aspect-ratio:16/10; }
+      .feature h3 { font-size:15px; }
+      .feature p { max-width:none; font-size:12px; }
+
+      .happiness { min-height:460px; }
+      .happiness::after { background:linear-gradient(0deg, rgba(12,10,12,.95) 0%, rgba(12,10,12,.64) 48%, rgba(12,10,12,.18) 100%); }
+      .happiness-photo { object-position:60% center; }
+      .happiness-inner { padding:64px 0; max-width:560px; }
+
+      .future-row { grid-template-columns:112px 1fr auto; gap:18px; }
       .constraints { grid-template-columns:1fr 1fr; }
       .constraint:nth-child(3n+2),
       .constraint:nth-child(3n+3) { padding-left:0; border-left:0; }
       .constraint:nth-child(even) { padding-left:18px; border-left:1px solid var(--line); }
-      .future-row { grid-template-columns:120px 1fr auto; }
+
+      .closing { padding:84px 0 74px; }
+      footer { padding-bottom:28px; }
     }
 
-    @media (max-width:600px) {
-      .feature-grid { grid-template-columns:1fr; }
-      .platform-head { align-items:start; flex-direction:column; gap:10px; }
-      .hero-photo-wrap { min-height:300px; height:72vw; }
-      .happiness { min-height:480px; }
-      .happiness::after { background:linear-gradient(0deg, rgba(12,10,12,.95), rgba(12,10,12,.2)); }
-      .happiness-inner { padding:64px 0; }
-      .future-row { grid-template-columns:1fr auto; }
+    @media (max-width:480px) {
+      .shell { width:min(var(--max), calc(100% - 24px)); }
+      .nav { min-height:58px; }
+      .brand { font-size:15px; }
+      .nav-cta { min-height:34px; padding:0 10px; font-size:10px; }
+
+      .hero { padding-top:38px; }
+      .hero-copy { padding-bottom:28px; }
+      .eyebrow { margin-bottom:14px; font-size:9px; }
+      h1 { font-size:clamp(2.75rem,13vw,3.25rem); line-height:.96; }
+      .hero-sub { margin-top:18px; font-size:14px; line-height:1.62; }
+      .hero-actions { display:grid; grid-template-columns:1fr; gap:8px; margin-top:22px; }
+      .hero-actions .btn { width:100%; min-height:44px; }
+      .hero-photo-wrap { height:clamp(280px,78vw,380px); aspect-ratio:auto; }
+
+      .section { padding:56px 0; }
+      .section-label { margin-bottom:14px; font-size:9px; }
+      .section-title { font-size:clamp(2.15rem,10vw,2.8rem); }
+      .section-copy { font-size:13px; line-height:1.72; }
+      .hand-note { font-size:21px; }
+
+      .journey { margin-top:32px; }
+      .journey-step,
+      .journey-step + .journey-step { grid-template-columns:28px 1fr; padding-left:18px; padding-bottom:26px; }
+      .journey-step strong { font-size:12.5px; }
+      .journey-step p { font-size:11px; }
+
+      .feature-grid { gap:30px; }
+      .feature-photo { aspect-ratio:4/3; }
+      .platform-link { font-size:10.5px; }
+
+      .happiness { min-height:440px; }
+      .happiness-photo { object-position:66% center; }
+      .happiness-inner { padding:54px 0; }
+      .happiness h2 { font-size:clamp(2.8rem,13vw,4rem); }
+      .happiness p { font-size:13px; }
+
+      .future-row { grid-template-columns:1fr auto; gap:8px 14px; padding:20px 0; }
       .future-row small { grid-column:1; }
-      .future-row h3 { grid-column:1; }
+      .future-row > div { grid-column:1; }
       .future-row p { grid-column:1 / -1; }
-      .future-row span { grid-column:2; grid-row:1 / 3; }
-      .constraints { grid-template-columns:1fr; }
+      .future-row span { grid-column:2; grid-row:1 / 3; align-self:center; }
+      .constraints { grid-template-columns:1fr; margin-top:38px; }
       .constraint,
-      .constraint:nth-child(even) { padding-left:0; border-left:0; }
+      .constraint:nth-child(even) { padding:15px 0; border-left:0; }
+
+      .closing { padding:70px 0 62px; }
+      .closing h2 { font-size:clamp(2.7rem,12vw,3.6rem); }
+      .closing p { font-size:13px; }
+      .footer-row { flex-direction:column; gap:12px; }
+    }
+
+    @media (max-width:360px) {
+      .shell { width:min(var(--max), calc(100% - 20px)); }
+      .nav { gap:8px; }
+      .brand { font-size:14px; }
+      .nav-cta { min-height:32px; padding:0 8px; font-size:9px; }
+      h1 { font-size:2.65rem; }
+      .hero-sub { font-size:13.5px; }
+      .section-title { font-size:2.05rem; }
+      .btn { font-size:11px; }
+      .happiness h2 { font-size:2.8rem; }
     }
 
     @media (prefers-reduced-motion:reduce) {
@@ -594,7 +708,7 @@
           </article>
 
           <article class="feature" data-feature="circle" data-status="available">
-            <img class="feature-photo" src="https://images.unsplash.com/photo-1764174861943-a7914825311f?auto=format&fit=crop&w=1100&q=80" alt="A small group spending time together" loading="lazy" />
+            <img class="feature-photo" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1100&q=80" alt="A small group of friends spending time together" loading="lazy" />
             <h3>Personal Circle</h3>
             <p>A deliberately small set of meaningful relationships, capped at six rather than optimized for graph size.</p>
             <span class="status">Available now</span>
@@ -684,7 +798,7 @@
   <footer>
     <div class="shell footer-row">
       <span>OneAnotherHuman · Product overview · Privacy-aware by design · Not medical advice</span>
-      <span class="photo-credit">Photography via Unsplash: Kirill Prikhodko, Patrick Marion, Daria Glakteeva, Vitaly Gariev and Ilya Semenov.</span>
+      <span class="photo-credit">Photography via Unsplash.</span>
     </div>
   </footer>
 </body>
