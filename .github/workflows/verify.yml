@@ -23,5 +23,5 @@ jobs:
         run: node tests/mobile-composition-contract.mjs
       - name: Verify how-it-works visual rail
         run: node tests/how-it-works-rail-contract.mjs
-      - name: Verify calm hero
+      - name: Verify cinematic photo hero
         run: node tests/calm-hero-contract.mjs
