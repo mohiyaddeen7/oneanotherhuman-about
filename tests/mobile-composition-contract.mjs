@@ -29,7 +29,7 @@ assert.match(
 
 assert.match(
   html,
-  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-actions\s+\.btn\s*\{[\s\S]*?width:\s*auto/i,
+  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-actions\s+\.hero-cta\s*\{[\s\S]*?width:\s*auto/i,
   "Hero CTA must not stretch full width on phones",
 );
 
