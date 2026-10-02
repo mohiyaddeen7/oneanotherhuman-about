@@ -31,7 +31,7 @@
 
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-    body { margin:0; background:var(--paper); color:var(--ink); }
+    body { margin:0; background:var(--paper); color:var(--ink); overflow-x:hidden; }
     img { display:block; width:100%; }
     a { color:inherit; text-decoration:none; }
     .shell { width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
@@ -517,68 +517,136 @@
       footer { padding-bottom:28px; }
     }
 
-    @media (max-width:480px) {
+
+    @media (max-width:640px) {
       .shell { width:min(var(--max), calc(100% - 24px)); }
-      .nav { min-height:58px; }
+
+      .site-header { position:relative; }
+      .nav { min-height:54px; justify-content:flex-start; }
       .brand { font-size:15px; }
-      .nav-cta { min-height:34px; padding:0 10px; font-size:10px; }
+      .nav-links { display:none; }
 
-      .hero { padding-top:38px; }
-      .hero-copy { padding-bottom:28px; }
-      .eyebrow { margin-bottom:14px; font-size:9px; }
-      h1 { font-size:clamp(2.75rem,13vw,3.25rem); line-height:.96; }
-      .hero-sub { margin-top:18px; font-size:14px; line-height:1.62; }
-      .hero-actions { display:grid; grid-template-columns:1fr; gap:8px; margin-top:22px; }
-      .hero-actions .btn { width:100%; min-height:44px; }
-      .hero-photo-wrap { height:clamp(280px,78vw,380px); aspect-ratio:auto; }
+      .hero { padding-top:30px; }
+      .hero-copy { max-width:34rem; padding:0 0 26px; }
+      .eyebrow { margin-bottom:12px; font-size:8.5px; letter-spacing:.18em; }
+      h1 { font-size:clamp(2.25rem,10vw,2.75rem); line-height:1; letter-spacing:-.045em; }
+      .hero-break { display:none; }
+      .hero-sub { max-width:29rem; margin-top:16px; font-size:13.5px; line-height:1.55; }
+      .hero-actions { display:grid; grid-template-columns:1fr; gap:4px; margin-top:18px; }
+      .hero-actions .btn { width:100%; min-height:40px; }
+      .hero-actions .btn:not(.primary) {
+        min-height:36px;
+        border:0;
+        background:transparent;
+        color:#3f3935;
+      }
+      .hero-photo-wrap { height:clamp(260px,70vw,340px); min-height:0; aspect-ratio:auto; }
 
-      .section { padding:56px 0; }
-      .section-label { margin-bottom:14px; font-size:9px; }
-      .section-title { font-size:clamp(2.15rem,10vw,2.8rem); }
-      .section-copy { font-size:13px; line-height:1.72; }
-      .hand-note { font-size:21px; }
+      .section { padding:44px 0; }
+      .section-label { margin-bottom:11px; font-size:8.5px; }
+      .section-title { font-size:clamp(1.9rem,8.4vw,2.25rem); line-height:1.03; letter-spacing:-.035em; }
+      .section-copy { margin-top:14px; font-size:12.5px; line-height:1.68; }
 
-      .journey { margin-top:32px; }
+      .why-grid { display:block; }
+      .hand-note { display:none; }
+
+      .journey { margin-top:26px; }
       .journey-step,
-      .journey-step + .journey-step { grid-template-columns:28px 1fr; padding-left:18px; padding-bottom:26px; }
-      .journey-step strong { font-size:12.5px; }
-      .journey-step p { font-size:11px; }
+      .journey-step + .journey-step {
+        grid-template-columns:24px 1fr;
+        padding-left:16px;
+        padding-bottom:22px;
+      }
+      .journey-step small { font-size:9px; }
+      .journey-step strong { font-size:12px; }
+      .journey-step p { margin-top:3px; font-size:10.5px; line-height:1.45; }
 
-      .feature-grid { gap:30px; }
-      .feature-photo { aspect-ratio:4/3; }
-      .platform-link { font-size:10.5px; }
+      .platform-head { margin-bottom:18px; }
+      .feature-grid { gap:26px; }
+      .feature-photo { aspect-ratio:16/10; border-radius:6px; }
+      .feature h3 { margin-top:10px; font-size:14px; }
+      .feature p { margin-top:4px; font-size:11.5px; line-height:1.55; }
+      .status { margin-top:7px; font-size:8.5px; }
 
-      .happiness { min-height:440px; }
-      .happiness-photo { object-position:66% center; }
-      .happiness-inner { padding:54px 0; }
-      .happiness h2 { font-size:clamp(2.8rem,13vw,4rem); }
-      .happiness p { font-size:13px; }
+      .happiness { min-height:390px; }
+      .happiness-photo { object-position:68% center; }
+      .happiness-inner { padding:44px 0; }
+      .happiness h2 { font-size:clamp(2.4rem,11vw,3.2rem); }
+      .happiness p { margin-top:16px; font-size:12.5px; line-height:1.62; }
 
-      .future-row { grid-template-columns:1fr auto; gap:8px 14px; padding:20px 0; }
-      .future-row small { grid-column:1; }
+      .future-row {
+        grid-template-columns:1fr auto;
+        gap:6px 12px;
+        padding:16px 0;
+      }
+      .future-row small { grid-column:1; font-size:8.5px; }
       .future-row > div { grid-column:1; }
-      .future-row p { grid-column:1 / -1; }
-      .future-row span { grid-column:2; grid-row:1 / 3; align-self:center; }
-      .constraints { grid-template-columns:1fr; margin-top:38px; }
-      .constraint,
-      .constraint:nth-child(even) { padding:15px 0; border-left:0; }
+      .future-row h3 { font-size:13.5px; }
+      .future-row p { grid-column:1 / -1; margin-top:4px; font-size:11px; line-height:1.5; }
+      .future-row span { grid-column:2; grid-row:1 / 3; align-self:center; font-size:14px; }
 
-      .closing { padding:70px 0 62px; }
-      .closing h2 { font-size:clamp(2.7rem,12vw,3.6rem); }
-      .closing p { font-size:13px; }
-      .footer-row { flex-direction:column; gap:12px; }
+      .constraints { grid-template-columns:1fr; margin-top:24px; }
+      .constraint,
+      .constraint:nth-child(even) {
+        padding:12px 0;
+        border-left:0;
+        font-size:11.5px;
+        line-height:1.4;
+      }
+
+      .closing { padding:52px 0 46px; }
+      .closing h2 { font-size:clamp(2.25rem,10vw,2.8rem); line-height:1; }
+      .closing p { margin-top:16px; font-size:12.5px; line-height:1.65; }
+      .closing-mark { margin-top:20px; }
+
+      footer { padding:20px 0 24px; font-size:9.5px; }
+      .footer-row { flex-direction:column; gap:8px; }
+    }
+
+    @media (max-width:480px) {
+      .shell { width:min(var(--max), calc(100% - 20px)); }
+      .hero { padding-top:26px; }
+      .hero-copy { padding-bottom:22px; }
+      h1 { font-size:clamp(2.2rem,10vw,2.5rem); }
+      .hero-sub { font-size:13px; }
+      .hero-actions { margin-top:16px; }
+      .hero-photo-wrap { height:clamp(240px,68vw,310px); }
+
+      .section { padding:40px 0; }
+      .section-title { font-size:clamp(1.8rem,8.2vw,2.1rem); }
+      .section-copy { font-size:12px; }
+
+      .journey { margin-top:22px; }
+      .journey-step,
+      .journey-step + .journey-step { padding-bottom:19px; }
+
+      .feature-grid { gap:22px; }
+      .feature-photo { aspect-ratio:16/9; }
+
+      .happiness { min-height:360px; }
+      .happiness-inner { padding:38px 0; }
+      .happiness h2 { font-size:clamp(2.25rem,10.5vw,2.8rem); }
+
+      .constraints { margin-top:22px; }
+      .constraint,
+      .constraint:nth-child(even) { padding:11px 0; font-size:11px; }
+
+      .closing { padding:46px 0 40px; }
+      .closing h2 { font-size:clamp(2.1rem,9.8vw,2.55rem); }
     }
 
     @media (max-width:360px) {
-      .shell { width:min(var(--max), calc(100% - 20px)); }
-      .nav { gap:8px; }
+      .shell { width:min(var(--max), calc(100% - 18px)); }
+      .nav { min-height:50px; }
       .brand { font-size:14px; }
-      .nav-cta { min-height:32px; padding:0 8px; font-size:9px; }
-      h1 { font-size:2.65rem; }
-      .hero-sub { font-size:13.5px; }
-      .section-title { font-size:2.05rem; }
-      .btn { font-size:11px; }
-      .happiness h2 { font-size:2.8rem; }
+      .nav-cta { min-height:30px; padding:0 7px; font-size:8.5px; }
+      h1 { font-size:2.18rem; }
+      .hero-sub { font-size:12.5px; }
+      .section-title { font-size:1.78rem; }
+      .btn { font-size:10.5px; }
+      .happiness h2 { font-size:2.2rem; }
+      .constraint,
+      .constraint:nth-child(even) { font-size:10.5px; }
     }
 
     @media (prefers-reduced-motion:reduce) {
@@ -605,7 +673,7 @@
     <section class="hero">
       <div class="hero-copy">
         <p class="eyebrow">People over popularity</p>
-        <h1>A social network<br />for being understood.</h1>
+        <h1>A social network<br class="hero-break" />for being understood.</h1>
         <p class="hero-sub">Meaningful connections. Real conversations. A calmer place to belong.</p>
         <div class="hero-actions">
           <a class="btn primary" href="#journey">See how it works</a>
