@@ -68,7 +68,7 @@ assert.match(
 
 assert.match(
   hero,
-  /<picture[\s\S]*?<source[^>]+media=["']\(max-width:\s*640px\)["'][^>]+srcset=["'][^"']*photo-1517486808906-6ca8b3f04846/i,
+  /<picture[\s\S]*?<source[^>]+media=["']\(max-width:\s*640px\)["'][^>]+srcset=["'][^"']*photo-1491438590914-bc09fcaaf77a/i,
   "Mobile hero should use a dedicated human-centered image source",
 );
 assert.match(
