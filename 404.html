@@ -136,10 +136,64 @@
     .final h2 { max-width:930px; }
     .final p { max-width:760px; color:rgba(255,255,255,.57); line-height:1.8; font-size:14px; }
     footer { margin-top:26px; padding:26px 0 38px; color:var(--soft); font-size:11px; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+
+    .status-legend { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+    .legend-pill, .feature-status {
+      display:inline-flex; align-items:center; gap:7px; border-radius:999px; font-size:10px;
+      font-weight:800; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap;
+    }
+    .legend-pill { padding:9px 11px; border:1px solid var(--line); background:rgba(255,255,255,.5); color:var(--muted); }
+    .legend-pill::before, .feature-status::before { content:""; width:7px; height:7px; border-radius:999px; flex:none; }
+    .is-available::before { background:#719177; }
+    .is-development::before { background:#8d689f; }
+    .is-future::before { background:#b59b70; }
+    .feature-groups { display:grid; gap:18px; margin-top:28px; }
+    .feature-group {
+      border:1px solid var(--line); border-radius:30px; padding:22px;
+      background:rgba(255,255,255,.34);
+    }
+    .feature-group-head { display:flex; align-items:flex-end; justify-content:space-between; gap:18px; margin-bottom:14px; }
+    .feature-group-head p { margin:0; max-width:600px; color:var(--muted); font-size:12px; line-height:1.65; }
+    .feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+    .feature-card {
+      min-height:210px; display:flex; flex-direction:column; justify-content:space-between;
+      padding:20px; border:1px solid rgba(23,23,23,.055); border-radius:22px;
+      background:rgba(255,255,255,.61);
+    }
+    .feature-card.development { background:linear-gradient(145deg, rgba(238,229,243,.92), rgba(255,255,255,.7)); }
+    .feature-card.future { background:linear-gradient(145deg, rgba(246,241,232,.82), rgba(255,255,255,.65)); }
+    .feature-card p { margin:10px 0 0; color:var(--muted); font-size:12.5px; line-height:1.7; }
+    .feature-status { padding:7px 9px; width:max-content; margin-top:18px; color:var(--soft); background:rgba(255,255,255,.6); }
+    .feature-topline { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px; }
+    .feature-code { font-size:10px; font-weight:800; letter-spacing:.14em; color:var(--soft); }
+    .feature-boundary {
+      margin-top:16px; padding:15px 17px; border-radius:18px; border:1px solid var(--line);
+      color:var(--muted); background:rgba(255,255,255,.42); font-size:12px; line-height:1.7;
+    }
+    .relationship-path {
+      margin-top:28px; display:grid; grid-template-columns:repeat(7,1fr); gap:8px; align-items:stretch;
+    }
+    .path-node {
+      position:relative; min-height:88px; display:flex; align-items:center; justify-content:center;
+      padding:13px 10px; text-align:center; border:1px solid var(--line); border-radius:18px;
+      background:rgba(255,255,255,.5); font-size:11px; font-weight:750; line-height:1.35;
+    }
+    .path-node:not(:last-child)::after {
+      content:"→"; position:absolute; right:-9px; top:50%; transform:translate(50%,-50%);
+      color:var(--soft); z-index:2; font-size:13px;
+    }
+    .platform-layers { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:24px; }
+    .platform-layer { padding:18px; border-radius:20px; border:1px solid var(--line); background:rgba(255,255,255,.4); }
+    .platform-layer strong { display:block; font-size:13px; }
+    .platform-layer span { display:block; margin-top:7px; color:var(--muted); font-size:11.5px; line-height:1.65; }
+
     @media (max-width: 850px) {
       .nav-links a:not(.keep) { display:none; }
       .hero { padding-top:64px; }
-      .grid-two, .principles, .status-grid, .not-grid { grid-template-columns:1fr; }
+      .grid-two, .principles, .status-grid, .not-grid, .feature-grid, .platform-layers { grid-template-columns:1fr; }
+      .relationship-path { grid-template-columns:1fr; }
+      .path-node:not(:last-child)::after { content:"↓"; right:auto; left:50%; top:auto; bottom:-10px; transform:translate(-50%,50%); }
+      .feature-group-head { align-items:flex-start; flex-direction:column; }
       .journey { padding:14px; }
       .step { grid-template-columns:48px 1fr; padding:18px; }
       .card, .status { padding:23px; }
@@ -160,6 +214,7 @@
       </a>
       <nav class="nav-links" aria-label="Page navigation">
         <a href="#idea">The idea</a>
+        <a href="#features">Features</a>
         <a href="#journey">How it works</a>
         <a href="#current-build">Current build</a>
         <a class="keep" href="#vision">Vision</a>
@@ -228,11 +283,207 @@
       </div>
     </section>
 
+
+    <section id="features" class="section">
+      <div class="section-head">
+        <div class="kicker">Explore the platform</div>
+        <h2>The full product vision, without pretending everything is already shipped.</h2>
+        <p class="copy">
+          OneAnotherHuman is broader than matching and messaging. It is designed as a set of connected experiences
+          that help people move from recognition to familiarity, trust, and eventually meaningful relationships.
+          Built, being built, and future ideas are deliberately separated below.
+        </p>
+        <div class="status-legend" aria-label="Feature status legend">
+          <span class="legend-pill is-available">Available now</span>
+          <span class="legend-pill is-development">In development</span>
+          <span class="legend-pill is-future">Future direction</span>
+        </div>
+      </div>
+
+      <div class="feature-groups">
+        <section class="feature-group" aria-labelledby="available-features">
+          <div class="feature-group-head">
+            <div>
+              <div class="kicker">Available now</div>
+              <h3 id="available-features" style="margin-top:8px;font-size:26px">The core relationship system</h3>
+            </div>
+            <p>These capabilities are part of the current repository-verified product build.</p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card" data-feature="pseudonymous-identity" data-status="available">
+              <div>
+                <div class="feature-topline"><span class="feature-code">IDENTITY</span></div>
+                <h3>Pseudonymous identity & privacy</h3>
+                <p>Present enough of yourself to be understood without making every personal detail public. Journeys and interests have separate visibility and matching choices.</p>
+              </div>
+              <span class="feature-status is-available">Available now</span>
+            </article>
+            <article class="feature-card" data-feature="meaningful-discovery" data-status="available">
+              <div>
+                <div class="feature-topline"><span class="feature-code">DISCOVERY</span></div>
+                <h3>Meaningful discovery</h3>
+                <p>Meet people through compatible context and shared signals in a finite experience rather than an endless people feed or public compatibility score.</p>
+              </div>
+              <span class="feature-status is-available">Available now</span>
+            </article>
+            <article class="feature-card" data-feature="moments" data-status="available">
+              <div>
+                <div class="feature-topline"><span class="feature-code">EXPRESSION</span></div>
+                <h3>Moments</h3>
+                <p>Share short text, photo, or question cards built for expression and understanding—not follower growth, creator reach, or public engagement counts.</p>
+              </div>
+              <span class="feature-status is-available">Available now</span>
+            </article>
+            <article class="feature-card" data-feature="crossing-paths" data-status="available">
+              <div>
+                <div class="feature-topline"><span class="feature-code">RELATIONSHIPS</span></div>
+                <h3>Crossed Paths & Keep Crossing Paths</h3>
+                <p>Repeated meaningful overlap can become a crossed path. Keep Crossing Paths is private and silent unless both people independently choose the relationship.</p>
+              </div>
+              <span class="feature-status is-available">Available now</span>
+            </article>
+            <article class="feature-card" data-feature="circle" data-status="available">
+              <div>
+                <div class="feature-topline"><span class="feature-code">CIRCLE</span></div>
+                <h3>A deliberately small personal Circle</h3>
+                <p>Mutual relationships can enter a personal Circle capped at six, keeping the product focused on depth rather than accumulating a huge social graph.</p>
+              </div>
+              <span class="feature-status is-available">Available now</span>
+            </article>
+            <article class="feature-card" data-feature="direct-messaging" data-status="available">
+              <div>
+                <div class="feature-topline"><span class="feature-code">CONVERSATION</span></div>
+                <h3>Direct messaging after mutuality</h3>
+                <p>Private conversation follows an authorized mutual relationship, with realtime delivery hints, typing state, recovery behavior, and safety controls.</p>
+              </div>
+              <span class="feature-status is-available">Available now</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="feature-group" aria-labelledby="development-features">
+          <div class="feature-group-head">
+            <div>
+              <div class="kicker">In development</div>
+              <h3 id="development-features" style="margin-top:8px;font-size:26px">Make connection easier to start</h3>
+            </div>
+            <p>The next phase adds low-pressure shared experiences without changing the mutual-relationship model.</p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card development" data-feature="happiness" data-status="development">
+              <div>
+                <div class="feature-topline"><span class="feature-code">HAPPINESS</span></div>
+                <h3>Shared experiences</h3>
+                <p>Lightweight activities give two people something small to do together before asking them to carry a conversation. The first approved experience is <strong>One Lie, One Question</strong>.</p>
+              </div>
+              <span class="feature-status is-development">In development</span>
+            </article>
+            <article class="feature-card development">
+              <div>
+                <div class="feature-topline"><span class="feature-code">DESIGN PRINCIPLE</span></div>
+                <h3>Low-pressure interaction</h3>
+                <p>The goal is not to turn the platform into a game network. Activities exist to reduce social friction and create a natural reason to talk.</p>
+              </div>
+              <span class="feature-status is-development">In development</span>
+            </article>
+            <article class="feature-card development">
+              <div>
+                <div class="feature-topline"><span class="feature-code">RELATIONSHIP FIRST</span></div>
+                <h3>Experiences that feed relationships</h3>
+                <p>Shared experiences should strengthen context and familiarity without exposing private matching inputs or becoming a popularity mechanic.</p>
+              </div>
+              <span class="feature-status is-development">In development</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="feature-group" aria-labelledby="future-features">
+          <div class="feature-group-head">
+            <div>
+              <div class="kicker">Future direction</div>
+              <h3 id="future-features" style="margin-top:8px;font-size:26px">Ways the social world can become richer</h3>
+            </div>
+            <p>These are product directions discussed for later phases. They are not presented as shipped capabilities.</p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card future" data-feature="communities" data-status="future">
+              <div>
+                <div class="feature-topline"><span class="feature-code">COMMUNITIES</span></div>
+                <h3>Small communities around shared context</h3>
+                <p>Group spaces where people can interact around a meaningful common experience without recreating follower hierarchies or noisy public forums.</p>
+              </div>
+              <span class="feature-status is-future">Future direction</span>
+            </article>
+            <article class="feature-card future" data-feature="check-ins" data-status="future">
+              <div>
+                <div class="feature-topline"><span class="feature-code">CHECK-INS</span></div>
+                <h3>Lightweight check-ins & support signals</h3>
+                <p>A simple way to signal how you are doing and, with appropriate consent and safety boundaries, make it easier for relevant people to show up.</p>
+              </div>
+              <span class="feature-status is-future">Future direction</span>
+            </article>
+            <article class="feature-card future" data-feature="live-circles" data-status="future">
+              <div>
+                <div class="feature-topline"><span class="feature-code">LIVE CIRCLES</span></div>
+                <h3>Small live shared spaces</h3>
+                <p>Bounded live rooms designed around participation and belonging rather than large broadcasts. Early concepts prioritize lightweight text-first formats.</p>
+              </div>
+              <span class="feature-status is-future">Future direction</span>
+            </article>
+            <article class="feature-card future" data-feature="shared-games" data-status="future">
+              <div>
+                <div class="feature-topline"><span class="feature-code">FUN ZONE</span></div>
+                <h3>Two-person social games</h3>
+                <p>Short formats such as word, prompt, or guessing experiences that help people interact naturally. They remain a bridge to human connection, not the product's destination.</p>
+              </div>
+              <span class="feature-status is-future">Future direction</span>
+            </article>
+            <article class="feature-card future">
+              <div>
+                <div class="feature-topline"><span class="feature-code">COMMUNITY CHAT</span></div>
+                <h3>Group conversation with boundaries</h3>
+                <p>Community conversation can grow from shared context while retaining privacy, moderation, block behavior, and finite interaction patterns.</p>
+              </div>
+              <span class="feature-status is-future">Future direction</span>
+            </article>
+            <article class="feature-card future">
+              <div>
+                <div class="feature-topline"><span class="feature-code">BELONGING</span></div>
+                <h3>More paths to familiarity</h3>
+                <p>Future mechanics should answer one question: does this help two people understand each other better without rewarding status, reach, or compulsive use?</p>
+              </div>
+              <span class="feature-status is-future">Future direction</span>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <div class="feature-boundary">
+        <strong>Public-roadmap rule:</strong> a feature only moves into “Available now” when repository evidence supports it.
+        Concepts can evolve or be removed before implementation; the vision is intentionally broader than the current build.
+      </div>
+
+      <div class="platform-layers" aria-label="Cross-cutting platform principles">
+        <div class="platform-layer"><strong>Privacy by default</strong><span>Matching inputs do not automatically become profile disclosures, and relationship intent can remain private.</span></div>
+        <div class="platform-layer"><strong>Safety throughout the flow</strong><span>Blocking, authorization, bounded interaction, and moderation concerns are treated as product mechanics rather than a separate afterthought.</span></div>
+        <div class="platform-layer"><strong>No popularity economy</strong><span>The product avoids follower races, public compatibility scores, endless discovery, and public reaction-count competition.</span></div>
+      </div>
+    </section>
+
     <section id="journey" class="section">
       <div class="section-head">
         <div class="kicker">The relationship journey</div>
         <h2>From “someone like me” to someone I actually know.</h2>
         <p class="copy">The platform is designed as a relationship journey, not a matching event.</p>
+        <div class="relationship-path" aria-label="Relationship journey">
+          <div class="path-node">Pseudonymous profile</div>
+          <div class="path-node">Discovery</div>
+          <div class="path-node">Moment</div>
+          <div class="path-node">Crossed path</div>
+          <div class="path-node">Mutual connection</div>
+          <div class="path-node">Circle</div>
+          <div class="path-node">Messaging</div>
+        </div>
       </div>
       <div class="journey">
         <article class="step">
