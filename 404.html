@@ -4,24 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>OneAnotherHuman — A social network for being understood</title>
-  <meta name="description" content="OneAnotherHuman is a privacy-aware social platform designed around meaningful human connection instead of followers, virality, or endless swiping." />
-  <meta name="theme-color" content="#f6f3ef" />
+  <meta name="description" content="OneAnotherHuman is a privacy-aware social platform built around meaningful human connection instead of followers, virality, or endless swiping." />
+  <meta name="theme-color" content="#f6f0e8" />
   <link rel="canonical" href="https://about.oneanotherhuman.com/" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="OneAnotherHuman — A social network for being understood" />
-  <meta property="og:description" content="A social network designed around meaningful human connection, mutuality, and privacy." />
+  <meta property="og:description" content="Meaningful connections. Real conversations. A calmer place to belong." />
   <meta property="og:url" content="https://about.oneanotherhuman.com/" />
   <meta name="twitter:card" content="summary" />
   <style>
     :root {
-      --paper:#f6f3ef;
-      --ink:#151515;
-      --muted:#6e6a65;
-      --line:#d8d2ca;
-      --accent:#735b78;
-      --soft:#ebe4ed;
-      --deep:#211f22;
+      --paper:#f7f1e9;
+      --surface:#fffaf4;
+      --ink:#201c19;
+      --muted:#756e67;
+      --line:#d9cfc4;
+      --purple:#6d43d6;
+      --purple-dark:#5631b8;
+      --night:#171517;
       --max:1180px;
       font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color:var(--ink);
@@ -31,660 +32,596 @@
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body { margin:0; background:var(--paper); color:var(--ink); }
+    img { display:block; width:100%; }
     a { color:inherit; text-decoration:none; }
     .shell { width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
 
     .site-header {
       position:sticky;
       top:0;
-      z-index:20;
-      background:rgba(246,243,239,.96);
-      border-bottom:1px solid var(--line);
+      z-index:30;
+      background:rgba(247,241,233,.97);
+      border-bottom:1px solid rgba(63,47,37,.12);
     }
     .nav {
       min-height:68px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:24px;
+      gap:28px;
     }
     .brand {
-      display:flex;
-      align-items:baseline;
-      gap:10px;
-      font-size:14px;
-      font-weight:750;
-      letter-spacing:-.02em;
-    }
-    .brand span { color:var(--muted); font-size:11px; font-weight:500; }
-    .nav-links { display:flex; gap:22px; align-items:center; }
-    .nav-links a { font-size:12px; color:var(--muted); }
-    .nav-links a:hover { color:var(--ink); }
-
-    .hero {
-      min-height:78vh;
-      display:grid;
-      align-content:center;
-      padding:90px 0 72px;
-      border-bottom:1px solid var(--line);
-    }
-    .hero-kicker {
-      font-size:12px;
-      color:var(--accent);
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      margin-bottom:26px;
-    }
-    h1 {
-      margin:0;
-      max-width:1060px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size:clamp(4.1rem, 9vw, 8.9rem);
-      line-height:.88;
-      letter-spacing:-.055em;
-      font-weight:500;
-    }
-    h1 em { color:var(--accent); font-style:italic; font-weight:400; }
-    .hero-bottom {
-      margin-top:52px;
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:56px;
-      align-items:start;
-    }
-    .hero-lead {
-      margin:0;
-      max-width:700px;
-      font-size:clamp(1.05rem, 1.8vw, 1.35rem);
-      line-height:1.7;
-      color:#373432;
-    }
-    .hero-meta {
-      display:grid;
-      gap:11px;
-      padding-top:4px;
-      font-size:12px;
-      line-height:1.6;
-      color:var(--muted);
-    }
-    .hero-meta strong { color:var(--ink); font-weight:650; }
-
-    .section {
-      padding:110px 0;
-      border-bottom:1px solid var(--line);
-    }
-    .section-label {
-      display:block;
-      margin-bottom:26px;
-      font-size:11px;
-      font-weight:750;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--accent);
-    }
-    .section-head {
-      display:grid;
-      grid-template-columns:.72fr 1.28fr;
-      gap:64px;
-      align-items:start;
-      margin-bottom:58px;
-    }
-    .section-head h2,
-    .chapter-title {
-      margin:0;
       font-family:Georgia, "Times New Roman", serif;
-      font-weight:500;
-      letter-spacing:-.035em;
-      line-height:1.02;
-    }
-    .section-head h2 { font-size:clamp(2.7rem, 5.3vw, 5.5rem); }
-    .section-head p {
-      margin:0;
-      max-width:650px;
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.8;
-    }
-
-    .manifesto {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:0;
-      border-top:1px solid var(--line);
-    }
-    .manifesto article {
-      min-height:340px;
-      padding:34px 40px 38px 0;
-      border-bottom:1px solid var(--line);
-    }
-    .manifesto article:nth-child(even) {
-      padding-left:40px;
-      border-left:1px solid var(--line);
-    }
-    .manifesto small {
-      display:block;
-      margin-bottom:42px;
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      color:var(--muted);
-    }
-    .manifesto h3 {
-      margin:0;
-      max-width:500px;
-      font-size:clamp(1.75rem,3vw,3rem);
-      line-height:1.06;
-      letter-spacing:-.035em;
-      font-weight:600;
-    }
-    .manifesto p {
-      margin:24px 0 0;
-      max-width:530px;
-      color:var(--muted);
-      line-height:1.8;
-      font-size:14px;
-    }
-
-    .story-rail {
-      border-top:1px solid var(--ink);
-      margin-top:46px;
-    }
-    .story-step {
-      display:grid;
-      grid-template-columns:74px 1fr 1.05fr;
-      gap:24px;
-      align-items:start;
-      padding:28px 0 30px;
-      border-bottom:1px solid var(--line);
-    }
-    .story-step .n {
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:31px;
-      color:var(--accent);
-    }
-    .story-step h3 {
-      margin:3px 0 0;
       font-size:18px;
       letter-spacing:-.025em;
     }
-    .story-step p {
-      margin:0;
-      max-width:580px;
-      color:var(--muted);
-      line-height:1.75;
-      font-size:13.5px;
-    }
-
-    .feature-intro {
-      max-width:820px;
-      margin-bottom:44px;
-      color:var(--muted);
-      line-height:1.8;
-      font-size:14px;
-    }
-    .feature-block + .feature-block { margin-top:78px; }
-    .feature-block-head {
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:28px;
-      padding-bottom:14px;
-      border-bottom:1px solid var(--ink);
-    }
-    .feature-block-head h3 {
-      margin:0;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(2rem,4vw,4rem);
-      font-weight:500;
-      letter-spacing:-.035em;
-    }
-    .feature-block-head span {
-      color:var(--muted);
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.1em;
-    }
-
-    .feature-line {
-      display:grid;
-      grid-template-columns:62px 1.05fr 1.6fr 145px;
-      gap:22px;
-      padding:25px 0 27px;
-      border-bottom:1px solid var(--line);
-      align-items:start;
-    }
-    .feature-line .index {
-      color:var(--muted);
-      font-size:11px;
-      padding-top:3px;
-    }
-    .feature-line h4 {
-      margin:0;
-      font-size:16px;
-      line-height:1.35;
-      letter-spacing:-.02em;
-    }
-    .feature-line p {
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.7;
-    }
-    .feature-line .status {
-      justify-self:end;
-      font-size:11px;
-      color:var(--accent);
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      text-align:right;
-    }
-    .feature-line.future .status { color:#8b745c; }
-
-    .boundary-note {
-      margin-top:32px;
-      max-width:780px;
-      color:var(--muted);
+    .nav-links { display:flex; align-items:center; gap:24px; }
+    .nav-links a {
       font-size:12px;
-      line-height:1.8;
+      color:#4f4944;
     }
-    .boundary-note strong { color:var(--ink); }
-
-    .next {
-      background:var(--deep);
-      color:#f5f1ec;
-      border-bottom:0;
-    }
-    .next .section-label { color:#cdb8d0; }
-    .next .section-head p { color:#b7b0b9; }
-    .next .section-head h2 { max-width:780px; }
-    .next-line {
-      display:grid;
-      grid-template-columns:1fr 1.15fr;
-      gap:80px;
-      padding-top:44px;
-      border-top:1px solid #4a454b;
-    }
-    .next-line .big {
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(2.4rem,5vw,5.3rem);
-      line-height:.98;
-      letter-spacing:-.04em;
-      margin:0;
-    }
-    .next-line .copy {
-      color:#b7b0b9;
-      line-height:1.85;
-      font-size:14px;
-    }
-    .next-line .copy strong { color:#f5f1ec; font-weight:600; }
-
-    .future-list {
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      border-top:1px solid var(--line);
-    }
-    .future-item {
-      padding:34px 36px 36px 0;
-      border-bottom:1px solid var(--line);
-    }
-    .future-item:nth-child(even) {
-      padding-left:36px;
-      border-left:1px solid var(--line);
-    }
-    .future-item small {
-      display:block;
-      color:#8b745c;
-      font-size:10px;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-      margin-bottom:17px;
-      font-weight:700;
-    }
-    .future-item h3 {
-      margin:0;
-      font-size:19px;
-      letter-spacing:-.02em;
-    }
-    .future-item p {
-      margin:12px 0 0;
-      max-width:500px;
-      color:var(--muted);
-      line-height:1.75;
-      font-size:13px;
-    }
-
-    .principles {
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      border-top:1px solid var(--ink);
-    }
-    .principle {
-      padding:30px 34px 0 0;
-      min-height:240px;
-    }
-    .principle + .principle {
-      border-left:1px solid var(--line);
-      padding-left:34px;
-    }
-    .principle .num {
-      display:block;
-      margin-bottom:54px;
-      color:var(--accent);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:26px;
-    }
-    .principle h3 { margin:0; font-size:18px; letter-spacing:-.02em; }
-    .principle p { margin:12px 0 0; color:var(--muted); font-size:13px; line-height:1.75; }
-
-    .constraints {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:0;
-      border-top:1px solid var(--line);
-      margin-top:56px;
-    }
-    .constraint {
-      padding:18px 24px 18px 0;
-      border-bottom:1px solid var(--line);
-      font-size:13px;
+    .nav-links a:hover { color:var(--ink); }
+    .nav-cta {
+      display:inline-flex;
+      min-height:38px;
+      align-items:center;
+      padding:0 16px;
+      background:var(--purple);
+      color:white !important;
+      border-radius:999px;
       font-weight:650;
     }
-    .constraint:nth-child(even) {
-      padding-left:24px;
-      border-left:1px solid var(--line);
+
+    .hero { padding:76px 0 0; }
+    .hero-copy {
+      text-align:center;
+      max-width:850px;
+      margin:0 auto;
+      padding:0 20px 50px;
+    }
+    .eyebrow {
+      margin:0 0 18px;
+      font-size:10px;
+      font-weight:750;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--purple-dark);
+    }
+    h1 {
+      margin:0;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(3.5rem,7.4vw,7.3rem);
+      line-height:.94;
+      letter-spacing:-.06em;
+      font-weight:500;
+    }
+    .hero-sub {
+      max-width:620px;
+      margin:24px auto 0;
+      font-size:16px;
+      line-height:1.7;
+      color:#514a45;
+    }
+    .hero-actions {
+      margin-top:28px;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .btn {
+      display:inline-flex;
+      min-height:46px;
+      align-items:center;
+      justify-content:center;
+      padding:0 18px;
+      border:1px solid rgba(38,28,22,.22);
+      border-radius:7px;
+      font-size:12px;
+      font-weight:650;
+      background:rgba(255,255,255,.45);
+    }
+    .btn.primary {
+      background:var(--purple);
+      border-color:var(--purple);
+      color:white;
+    }
+    .btn:hover { transform:translateY(-1px); }
+
+    .hero-photo-wrap {
+      position:relative;
+      height:min(48vw, 560px);
+      min-height:360px;
+      overflow:hidden;
+      background:#c9b59f;
+    }
+    .hero-photo {
+      height:100%;
+      object-fit:cover;
+      object-position:center 58%;
+      filter:saturate(.86) contrast(.94);
+    }
+    .hero-photo-wrap::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(23,18,15,.18), transparent 45%);
+      pointer-events:none;
     }
 
-    .vision {
-      padding:130px 0 120px;
+    .section { padding:96px 0; border-bottom:1px solid var(--line); }
+    .section-label {
+      display:block;
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-weight:750;
+      color:var(--purple-dark);
+      margin-bottom:18px;
     }
-    .vision-quote {
+    .section-title {
       margin:0;
-      max-width:1080px;
       font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(3rem,7vw,7.1rem);
-      line-height:.95;
+      font-size:clamp(2.45rem,4.8vw,4.8rem);
+      line-height:1.02;
+      letter-spacing:-.045em;
+      font-weight:500;
+    }
+    .section-copy {
+      margin:20px 0 0;
+      max-width:690px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .why-grid {
+      display:grid;
+      grid-template-columns:1.45fr .55fr;
+      gap:70px;
+      align-items:start;
+    }
+    .hand-note {
+      justify-self:end;
+      margin-top:30px;
+      max-width:200px;
+      font-family:"Segoe Print","Bradley Hand",cursive;
+      font-size:27px;
+      line-height:1.18;
+      transform:rotate(-4deg);
+      color:#3b3431;
+    }
+    .hand-note::after {
+      content:"";
+      display:block;
+      width:105px;
+      height:2px;
+      margin-top:12px;
+      background:var(--purple);
+      transform:rotate(-2deg);
+    }
+
+    .journey {
+      margin-top:52px;
+      display:grid;
+      grid-template-columns:repeat(7,1fr);
+      border-top:1px solid #817870;
+    }
+    .journey-step {
+      position:relative;
+      padding:26px 12px 0 0;
+      min-height:154px;
+    }
+    .journey-step::before {
+      content:"";
+      position:absolute;
+      top:-5px;
+      left:0;
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:var(--purple);
+      box-shadow:0 0 0 4px var(--paper);
+    }
+    .journey-step + .journey-step { padding-left:14px; }
+    .journey-step small {
+      display:block;
+      margin-bottom:9px;
+      color:var(--muted);
+      font-size:10px;
+    }
+    .journey-step strong {
+      display:block;
+      font-size:12px;
+      line-height:1.35;
+    }
+    .journey-step p {
+      margin:7px 0 0;
+      color:var(--muted);
+      font-size:10.5px;
+      line-height:1.55;
+    }
+
+    .platform-head {
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:28px;
+      margin-bottom:28px;
+    }
+    .platform-link {
+      font-size:11px;
+      color:#514a45;
+      border-bottom:1px solid #8c8178;
+      padding-bottom:3px;
+    }
+    .feature-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:28px 24px;
+    }
+    .feature {
+      min-width:0;
+    }
+    .feature-photo {
+      aspect-ratio:16/9;
+      object-fit:cover;
+      border-radius:8px;
+      background:#d7cabb;
+      filter:saturate(.8) contrast(.96);
+    }
+    .feature h3 {
+      margin:13px 0 0;
+      font-size:14px;
+      letter-spacing:-.015em;
+    }
+    .feature p {
+      margin:5px 0 0;
+      color:var(--muted);
+      font-size:11.5px;
+      line-height:1.6;
+      max-width:330px;
+    }
+    .status {
+      display:inline-block;
+      margin-top:9px;
+      font-size:9px;
+      font-weight:750;
+      text-transform:uppercase;
+      letter-spacing:.11em;
+      color:var(--purple-dark);
+    }
+
+    .happiness {
+      position:relative;
+      overflow:hidden;
+      background:var(--night);
+      color:white;
+      min-height:520px;
+      display:grid;
+      align-items:end;
+    }
+    .happiness-photo {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center 58%;
+      opacity:.62;
+      filter:saturate(.88) contrast(.96);
+    }
+    .happiness::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, rgba(12,10,12,.92) 0%, rgba(12,10,12,.62) 45%, rgba(12,10,12,.18) 100%);
+    }
+    .happiness-inner {
+      position:relative;
+      z-index:2;
+      padding:78px 0;
+      max-width:610px;
+    }
+    .happiness .section-label { color:#d5c4ff; }
+    .happiness h2 {
+      margin:0;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(3rem,6vw,6rem);
+      line-height:.96;
       letter-spacing:-.05em;
       font-weight:500;
     }
-    .vision-quote em { color:var(--accent); font-style:italic; font-weight:400; }
-    .vision-bottom {
-      margin-top:54px;
+    .happiness p {
+      margin:22px 0 0;
+      max-width:520px;
+      color:#ded6df;
+      font-size:14px;
+      line-height:1.75;
+    }
+
+    .future-row {
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:56px;
-      padding-top:24px;
+      grid-template-columns:160px 1fr auto;
+      gap:26px;
+      align-items:start;
+      padding:22px 0;
       border-top:1px solid var(--line);
     }
-    .vision-bottom p {
+    .future-row:last-child { border-bottom:1px solid var(--line); }
+    .future-row small {
+      color:#8d7461;
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      font-weight:700;
+    }
+    .future-row h3 {
       margin:0;
+      font-size:15px;
+    }
+    .future-row p {
+      grid-column:2;
+      margin:6px 0 0;
       color:var(--muted);
+      font-size:12px;
+      line-height:1.65;
+    }
+    .future-row span {
+      color:#8b8179;
+      font-size:17px;
+    }
+
+    .constraints {
+      margin-top:48px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:0;
+      border-top:1px solid var(--line);
+    }
+    .constraint {
+      padding:18px 18px 18px 0;
+      border-bottom:1px solid var(--line);
+      font-size:12px;
+      font-weight:650;
+    }
+    .constraint:nth-child(3n+2),
+    .constraint:nth-child(3n+3) {
+      padding-left:18px;
+      border-left:1px solid var(--line);
+    }
+
+    .closing {
+      text-align:center;
+      padding:112px 0 96px;
+    }
+    .closing h2 {
+      margin:0 auto;
+      max-width:880px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(3rem,6.5vw,6.6rem);
+      line-height:.95;
+      letter-spacing:-.055em;
+      font-weight:500;
+    }
+    .closing p {
+      max-width:700px;
+      margin:24px auto 0;
+      color:var(--muted);
+      font-size:14px;
       line-height:1.8;
-      font-size:13px;
+    }
+    .closing-mark {
+      width:54px;
+      height:2px;
+      margin:28px auto 0;
+      background:var(--purple);
     }
 
     footer {
-      min-height:88px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
       border-top:1px solid var(--line);
+      padding:28px 0 36px;
       color:var(--muted);
-      font-size:11px;
+      font-size:10px;
+      line-height:1.6;
     }
+    .footer-row {
+      display:flex;
+      justify-content:space-between;
+      gap:28px;
+      flex-wrap:wrap;
+    }
+    .photo-credit { max-width:760px; }
 
-    @media (max-width: 860px) {
+    @media (max-width:900px) {
       .shell { width:min(var(--max), calc(100% - 28px)); }
-      .nav-links a:not(:last-child) { display:none; }
-      .brand span { display:none; }
-      .hero { min-height:auto; padding:78px 0 58px; }
-      h1 { font-size:clamp(3.5rem,17vw,6.8rem); }
-      .hero-bottom,
-      .section-head,
-      .next-line,
-      .vision-bottom { grid-template-columns:1fr; gap:26px; }
-      .section { padding:82px 0; }
-      .section-head { margin-bottom:42px; }
-      .manifesto,
-      .future-list,
-      .principles,
-      .constraints { grid-template-columns:1fr; }
-      .manifesto article,
-      .manifesto article:nth-child(even),
-      .future-item,
-      .future-item:nth-child(even),
-      .principle,
-      .principle + .principle,
-      .constraint,
-      .constraint:nth-child(even) {
-        padding-left:0;
-        padding-right:0;
-        border-left:0;
-      }
-      .story-step { grid-template-columns:48px 1fr; }
-      .story-step p { grid-column:2; }
-      .feature-line { grid-template-columns:46px 1fr; gap:12px 16px; }
-      .feature-line p { grid-column:2; }
-      .feature-line .status { grid-column:2; justify-self:start; text-align:left; }
-      .feature-block-head { align-items:flex-start; flex-direction:column; gap:8px; }
-      .principle { min-height:0; padding-bottom:34px; border-bottom:1px solid var(--line); }
-      .principle .num { margin-bottom:24px; }
-      footer { align-items:flex-start; flex-direction:column; justify-content:center; padding:26px 0; }
+      .nav-links a:not(.nav-cta) { display:none; }
+      .hero { padding-top:58px; }
+      .hero-copy { padding-bottom:36px; }
+      .hero-photo-wrap { height:58vw; min-height:340px; }
+      .why-grid { grid-template-columns:1fr; gap:24px; }
+      .hand-note { justify-self:start; margin:10px 0 0; }
+      .journey { overflow-x:auto; grid-template-columns:repeat(7,150px); padding-bottom:8px; }
+      .feature-grid { grid-template-columns:repeat(2,1fr); }
+      .constraints { grid-template-columns:1fr 1fr; }
+      .constraint:nth-child(3n+2),
+      .constraint:nth-child(3n+3) { padding-left:0; border-left:0; }
+      .constraint:nth-child(even) { padding-left:18px; border-left:1px solid var(--line); }
+      .future-row { grid-template-columns:120px 1fr auto; }
     }
 
-    @media (prefers-reduced-motion: reduce) {
+    @media (max-width:600px) {
+      .feature-grid { grid-template-columns:1fr; }
+      .platform-head { align-items:start; flex-direction:column; gap:10px; }
+      .hero-photo-wrap { min-height:300px; height:72vw; }
+      .happiness { min-height:480px; }
+      .happiness::after { background:linear-gradient(0deg, rgba(12,10,12,.95), rgba(12,10,12,.2)); }
+      .happiness-inner { padding:64px 0; }
+      .future-row { grid-template-columns:1fr auto; }
+      .future-row small { grid-column:1; }
+      .future-row h3 { grid-column:1; }
+      .future-row p { grid-column:1 / -1; }
+      .future-row span { grid-column:2; grid-row:1 / 3; }
+      .constraints { grid-template-columns:1fr; }
+      .constraint,
+      .constraint:nth-child(even) { padding-left:0; border-left:0; }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
       html { scroll-behavior:auto; }
+      .btn:hover { transform:none; }
     }
   </style>
 </head>
-<body data-layout="editorial">
+<body data-layout="warm-photo-led">
   <header class="site-header">
     <div class="shell nav">
-      <a class="brand" href="#top">oneanotherhuman <span>A place to feel understood</span></a>
+      <a class="brand" href="#top">OneAnotherHuman</a>
       <nav class="nav-links" aria-label="Page navigation">
-        <a href="#why">Why</a>
+        <a href="#why">About</a>
         <a href="#journey">How it works</a>
-        <a href="#features">Product</a>
-        <a href="#future">Direction</a>
+        <a href="#features">Features</a>
+        <a href="#vision">Vision</a>
+        <a class="nav-cta" href="#features">Explore the platform</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
-    <section class="shell hero">
-      <div class="hero-kicker">OneAnotherHuman</div>
-      <h1>A social network for <em>being understood.</em></h1>
-      <div class="hero-bottom">
-        <p class="hero-lead">
-          Not a bigger audience. Not another follower graph. A place built around the possibility that the right person
-          might understand something about your life because part of it feels familiar to them too.
-        </p>
-        <div class="hero-meta">
-          <div><strong>Built around</strong><br />context, mutuality, privacy and depth</div>
-          <div><strong>Deliberately avoids</strong><br />popularity scores, cold DMs and endless discovery</div>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">People over popularity</p>
+        <h1>A social network<br />for being understood.</h1>
+        <p class="hero-sub">Meaningful connections. Real conversations. A calmer place to belong.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#journey">See how it works</a>
+          <a class="btn" href="#features">Explore the platform →</a>
         </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <img class="hero-photo" src="https://images.unsplash.com/photo-1724028722169-42c94f20761c?auto=format&fit=crop&w=2200&q=82" alt="Two people sitting together at sunset" />
       </div>
     </section>
 
     <section id="why" class="section">
-      <div class="shell">
-        <span class="section-label">Why this exists</span>
-        <div class="section-head">
-          <h2>Most social products help you be seen. Fewer help you feel known.</h2>
-          <p>
-            OneAnotherHuman starts from a different question: what if discovery, expression and conversation were designed
-            around meaningful human context before reach? The aim is not to turn difficult experiences into content or reduce
-            people to a diagnosis. It is to make recognition a natural first step toward relationship.
+      <div class="shell why-grid">
+        <div>
+          <span class="section-label">Why this exists</span>
+          <h2 class="section-title">Most social products are built for attention.</h2>
+          <p class="section-copy">
+            OneAnotherHuman is being built for something different: meaningful relationships. A place where you can be yourself,
+            find people who truly get you, and build real connections without turning your life into content or competing for reach.
           </p>
         </div>
-        <div class="manifesto">
-          <article>
-            <small>01 — Context before contact</small>
-            <h3>Meet through something that actually matters.</h3>
-            <p>Discovery begins with meaningful overlap rather than random outreach, follower growth or a public popularity score.</p>
-          </article>
-          <article>
-            <small>02 — Mutuality before access</small>
-            <h3>Interest can stay private until it becomes mutual.</h3>
-            <p>Keep Crossing Paths is silent. Conversation opens because both people independently choose the relationship.</p>
-          </article>
-          <article>
-            <small>03 — Depth before scale</small>
-            <h3>A small relationship can be more valuable than a large graph.</h3>
-            <p>Finite discovery and a personal Circle capped at six are product choices, not missing growth mechanics.</p>
-          </article>
-          <article>
-            <small>04 — Privacy as product design</small>
-            <h3>Matching signals do not automatically become public disclosures.</h3>
-            <p>People can decide what helps matching, what appears publicly, and what stays private.</p>
-          </article>
-        </div>
+        <div class="hand-note" aria-label="People over popularity">People<br />over<br />popularity.</div>
       </div>
     </section>
 
     <section id="journey" class="section">
       <div class="shell">
-        <span class="section-label">How a relationship forms</span>
-        <div class="section-head">
-          <h2>From recognition to familiarity.</h2>
-          <p>
-            The platform is designed as a relationship journey, not a matching event. Each step should make the next one feel
-            more natural instead of forcing two strangers into a conversation.
-          </p>
-        </div>
-        <div class="story-rail" aria-label="Relationship journey">
-          <div class="story-step">
-            <div class="n">01</div>
-            <h3>Pseudonymous profile</h3>
-            <p>Show enough to be understood without making every personal detail public.</p>
-          </div>
-          <div class="story-step">
-            <div class="n">02</div>
-            <h3>Discovery</h3>
-            <p>Meet people through compatible context and meaningful shared signals in a finite experience.</p>
-          </div>
-          <div class="story-step">
-            <div class="n">03</div>
-            <h3>Moment</h3>
-            <p>Share a short text, photo or question that creates a reason to understand rather than perform.</p>
-          </div>
-          <div class="story-step">
-            <div class="n">04</div>
-            <h3>Crossed path</h3>
-            <p>Meaningful interaction can become a crossed path. Either person can privately choose Keep Crossing Paths.</p>
-          </div>
-          <div class="story-step">
-            <div class="n">05</div>
-            <h3>Mutual connection</h3>
-            <p>Nothing is announced until both people independently choose the relationship.</p>
-          </div>
-          <div class="story-step">
-            <div class="n">06</div>
-            <h3>Circle</h3>
-            <p>A deliberately small personal Circle keeps attention on relationships that matter rather than graph size.</p>
-          </div>
-          <div class="story-step">
-            <div class="n">07</div>
-            <h3>Messaging</h3>
-            <p>Private conversation becomes available after mutuality, with authorization, realtime behavior and safety controls.</p>
-          </div>
+        <span class="section-label">How it works</span>
+        <h2 class="section-title">How a relationship forms.</h2>
+        <p class="section-copy">The platform is designed as a relationship journey, not a matching event.</p>
+
+        <div class="journey" aria-label="Relationship journey">
+          <article class="journey-step">
+            <small>01</small><strong>Pseudonymous profile</strong><p>Be yourself, not a brand.</p>
+          </article>
+          <article class="journey-step">
+            <small>02</small><strong>Discovery</strong><p>Find people through shared context.</p>
+          </article>
+          <article class="journey-step">
+            <small>03</small><strong>Moment</strong><p>Share a thought, photo or question.</p>
+          </article>
+          <article class="journey-step">
+            <small>04</small><strong>Crossed path</strong><p>See each other again by choice.</p>
+          </article>
+          <article class="journey-step">
+            <small>05</small><strong>Mutual connection</strong><p>Both show interest privately.</p>
+          </article>
+          <article class="journey-step">
+            <small>06</small><strong>Circle</strong><p>Build a small, meaningful circle.</p>
+          </article>
+          <article class="journey-step">
+            <small>07</small><strong>Messaging</strong><p>Start a real conversation.</p>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="features" class="section">
       <div class="shell">
-        <span class="section-label">Explore the platform</span>
-        <div class="section-head">
-          <h2>What exists today.</h2>
-          <p>
-            Built, being built, and future ideas are deliberately separated. “Available now” below means the capability is part
-            of the current repository-verified build; it is not a claim that every hosted production dependency or public-launch
-            condition is complete.
-          </p>
-        </div>
-
-        <p class="feature-intro">
-          The current product already contains a connected relationship system rather than a collection of disconnected features.
-          Each part exists to move someone from “this person feels relevant” toward an actual human relationship.
-        </p>
-
-        <div class="feature-block">
-          <div class="feature-block-head">
-            <h3>Available now</h3>
-            <span>Repository-verified build</span>
+        <div class="platform-head">
+          <div>
+            <span class="section-label">The platform today</span>
+            <h2 class="section-title">What already exists.</h2>
           </div>
-
-          <article class="feature-line" data-feature="pseudonymous-identity" data-status="available">
-            <div class="index">01</div>
-            <h4>Pseudonymous identity & privacy</h4>
-            <p>Choose what appears publicly and what can contribute privately to matching. Journeys and interests do not have to become public disclosures.</p>
-            <div class="status">Available now</div>
-          </article>
-
-          <article class="feature-line" data-feature="meaningful-discovery" data-status="available">
-            <div class="index">02</div>
-            <h4>Meaningful discovery</h4>
-            <p>Finite discovery shaped by compatible context rather than an endless ranked people feed or a public compatibility score.</p>
-            <div class="status">Available now</div>
-          </article>
-
-          <article class="feature-line" data-feature="moments" data-status="available">
-            <div class="index">03</div>
-            <h4>Moments</h4>
-            <p>Short text, photo or question cards made for expression and understanding rather than creator metrics or engagement competition.</p>
-            <div class="status">Available now</div>
-          </article>
-
-          <article class="feature-line" data-feature="crossing-paths" data-status="available">
-            <div class="index">04</div>
-            <h4>Crossed Paths & Keep Crossing Paths</h4>
-            <p>A private, silent way to express relationship intent. It only becomes mutual when the other person independently chooses the same path.</p>
-            <div class="status">Available now</div>
-          </article>
-
-          <article class="feature-line" data-feature="circle" data-status="available">
-            <div class="index">05</div>
-            <h4>Personal Circle</h4>
-            <p>A deliberately small set of meaningful relationships, capped at six instead of optimized for accumulating a large social graph.</p>
-            <div class="status">Available now</div>
-          </article>
-
-          <article class="feature-line" data-feature="direct-messaging" data-status="available">
-            <div class="index">06</div>
-            <h4>Direct messaging after mutuality</h4>
-            <p>Authorized private conversation with realtime delivery hints, typing state, catch-up behavior and stop/block safety boundaries.</p>
-            <div class="status">Available now</div>
-          </article>
+          <a class="platform-link" href="#future">See what comes next →</a>
         </div>
 
-        <p class="boundary-note">
-          <strong>Public roadmap rule:</strong> a feature only moves into “Available now” when repository evidence supports it.
-          Future concepts can evolve, narrow or disappear before implementation.
+        <p class="section-copy" style="margin-bottom:34px">
+          Built, being built, and future ideas are deliberately separated. “Available now” means the capability is part of the
+          current repository-verified build; it is not a claim that every hosted production dependency or public-launch condition is complete.
         </p>
+
+        <div class="feature-grid">
+          <article class="feature" data-feature="pseudonymous-identity" data-status="available">
+            <img class="feature-photo" src="https://images.unsplash.com/photo-1763429602894-6a7616df5947?auto=format&fit=crop&w=1100&q=80" alt="Two people sharing a warm human moment" loading="lazy" />
+            <h3>Pseudonymous identity</h3>
+            <p>Be understood without exposing everything. Profile visibility and private matching signals remain separate.</p>
+            <span class="status">Available now</span>
+          </article>
+
+          <article class="feature" data-feature="meaningful-discovery" data-status="available">
+            <img class="feature-photo" src="https://images.unsplash.com/photo-1764174861943-a7914825311f?auto=format&fit=crop&w=1100&q=80" alt="Friends sitting together around a table" loading="lazy" />
+            <h3>Meaningful discovery</h3>
+            <p>Meet people through shared context instead of an endless popularity-ranked people feed.</p>
+            <span class="status">Available now</span>
+          </article>
+
+          <article class="feature" data-feature="moments" data-status="available">
+            <img class="feature-photo" src="https://images.unsplash.com/photo-1701634441311-e624c7fdfedf?auto=format&fit=crop&w=1100&q=80" alt="Someone writing in a journal by warm candlelight" loading="lazy" />
+            <h3>Moments</h3>
+            <p>Share short text, photos or questions for expression and understanding rather than performance.</p>
+            <span class="status">Available now</span>
+          </article>
+
+          <article class="feature" data-feature="crossing-paths" data-status="available">
+            <img class="feature-photo" src="https://images.unsplash.com/photo-1724028722169-42c94f20761c?auto=format&fit=crop&w=1100&q=80" alt="Two people spending quiet time together" loading="lazy" />
+            <h3>Crossed paths</h3>
+            <p>Choose privately to keep crossing paths with someone. Nothing is announced unless the interest becomes mutual.</p>
+            <span class="status">Available now</span>
+          </article>
+
+          <article class="feature" data-feature="circle" data-status="available">
+            <img class="feature-photo" src="https://images.unsplash.com/photo-1764174861943-a7914825311f?auto=format&fit=crop&w=1100&q=80" alt="A small group spending time together" loading="lazy" />
+            <h3>Personal Circle</h3>
+            <p>A deliberately small set of meaningful relationships, capped at six rather than optimized for graph size.</p>
+            <span class="status">Available now</span>
+          </article>
+
+          <article class="feature" data-feature="direct-messaging" data-status="available">
+            <img class="feature-photo" src="https://images.unsplash.com/photo-1758272422025-921ddbfcd3c0?auto=format&fit=crop&w=1100&q=80" alt="A person having a conversation through their phone" loading="lazy" />
+            <h3>Direct messaging</h3>
+            <p>Conversation after mutual connection, with authorization, realtime behavior and safety controls.</p>
+            <span class="status">Available now</span>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="section next" aria-labelledby="next-title">
+    <section class="happiness" data-feature="happiness" data-status="development">
+      <img class="happiness-photo" src="https://images.unsplash.com/photo-1758523981334-4b7d5e179efa?auto=format&fit=crop&w=2200&q=82" alt="Friends sharing sparklers together at dusk" loading="lazy" />
       <div class="shell">
-        <span class="section-label">In development</span>
-        <div class="section-head">
-          <h2 id="next-title">What we're building next.</h2>
+        <div class="happiness-inner">
+          <span class="section-label">In development</span>
+          <h2>Happiness is next.</h2>
           <p>
-            The next phase is about reducing the pressure of starting a conversation. Instead of asking two people to immediately
-            “talk about themselves,” OneAnotherHuman can give them something small to experience together first.
+            Low-pressure shared experiences can help two people connect in a more playful, authentic way before asking them
+            to carry a conversation. The first approved experience is <strong>One Lie, One Question.</strong>
           </p>
-        </div>
-
-        <div class="next-line" data-feature="happiness" data-status="development">
-          <p class="big">Happiness<br />through shared experience.</p>
-          <div class="copy">
-            <strong>One Lie, One Question</strong> is the first approved experience. The point is not to turn the product into a
-            game network. It is to make connection easier to begin, create a small shared memory, and give conversation somewhere
-            natural to go next.<br /><br />
-            Status: <strong>In development.</strong>
+          <div class="hero-actions" style="justify-content:flex-start">
+            <a class="btn primary" href="#future">See where it can go →</a>
           </div>
         </div>
       </div>
@@ -693,65 +630,32 @@
     <section id="future" class="section">
       <div class="shell">
         <span class="section-label">Future direction</span>
-        <div class="section-head">
-          <h2>Where this can go.</h2>
-          <p>
-            These are product directions, not shipped promises. They extend the same core idea: create more ways for people to
-            recognize one another, spend meaningful time together and belong without recreating the status mechanics of mainstream social networks.
-          </p>
-        </div>
+        <h2 class="section-title">And more to come.</h2>
+        <p class="section-copy">
+          These are product directions, not shipped promises. The same rule remains: every new mechanic should make it easier
+          for people to understand one another without recreating the status economy of mainstream social networks.
+        </p>
 
-        <div class="future-list">
-          <article class="future-item" data-feature="communities" data-status="future">
-            <small>Future direction — Communities</small>
-            <h3>Small communities around shared context</h3>
-            <p>Group spaces for people with a meaningful common experience, without follower hierarchies or noisy public-forum dynamics.</p>
+        <div style="margin-top:44px">
+          <article class="future-row" data-feature="communities" data-status="future">
+            <small>Communities</small>
+            <div><h3>Small communities around shared context</h3><p>Group belonging without follower hierarchies or noisy public-forum dynamics.</p></div>
+            <span>→</span>
           </article>
-          <article class="future-item" data-feature="check-ins" data-status="future">
-            <small>Future direction — Check-ins</small>
-            <h3>Lightweight check-ins & support signals</h3>
-            <p>Simple ways to signal how you are doing and, with consent and safety boundaries, make it easier for relevant people to show up.</p>
+          <article class="future-row" data-feature="check-ins" data-status="future">
+            <small>Check-ins</small>
+            <div><h3>Lightweight support signals</h3><p>Simple ways to express how you are doing, with consent and safety boundaries around who can respond.</p></div>
+            <span>→</span>
           </article>
-          <article class="future-item" data-feature="live-circles" data-status="future">
-            <small>Future direction — Live Circles</small>
-            <h3>Small live shared spaces</h3>
-            <p>Bounded, participation-oriented rooms built around belonging rather than broadcast scale. Early concepts favor lightweight text-first formats.</p>
+          <article class="future-row" data-feature="live-circles" data-status="future">
+            <small>Live Circles</small>
+            <div><h3>Small live shared spaces</h3><p>Bounded participation-oriented rooms built around belonging rather than broadcast scale.</p></div>
+            <span>→</span>
           </article>
-          <article class="future-item" data-feature="shared-games" data-status="future">
-            <small>Future direction — Fun Zone</small>
-            <h3>Two-person social experiences</h3>
-            <p>Short word, prompt and guessing formats that make interaction easier. The activity is a bridge to connection, not the destination.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="shell">
-        <span class="section-label">Product principles</span>
-        <div class="section-head">
-          <h2>The mechanics are part of the philosophy.</h2>
-          <p>
-            OneAnotherHuman should not say one thing about meaningful connection while quietly rewarding the same behaviors as every
-            attention network. The constraints below are part of the product identity.
-          </p>
-        </div>
-
-        <div class="principles">
-          <article class="principle">
-            <span class="num">01</span>
-            <h3>Privacy before disclosure</h3>
-            <p>Private matching context should not automatically become a profile field just because it helps people find one another.</p>
-          </article>
-          <article class="principle">
-            <span class="num">02</span>
-            <h3>Mutuality before access</h3>
-            <p>Relationships and conversations should emerge from independent intent rather than unsolicited access.</p>
-          </article>
-          <article class="principle">
-            <span class="num">03</span>
-            <h3>Human depth before engagement depth</h3>
-            <p>Success should move toward meaningful relationships, not simply more minutes, more reach or more visible status.</p>
+          <article class="future-row" data-feature="shared-games" data-status="future">
+            <small>Fun Zone</small>
+            <div><h3>Two-person social experiences</h3><p>Short games and prompts that make interaction easier while keeping the human relationship as the destination.</p></div>
+            <span>→</span>
           </article>
         </div>
 
@@ -766,25 +670,22 @@
       </div>
     </section>
 
-    <section class="shell vision">
+    <section id="vision" class="closing shell">
       <span class="section-label">The long-term idea</span>
-      <p class="vision-quote">
-        Build a place where a meaningful relationship is a better success metric than <em>another minute of attention.</em>
+      <h2>A calmer, kinder internet is possible.</h2>
+      <p>
+        We believe meaningful relationships should be a better success metric than another minute of attention.
+        OneAnotherHuman is an attempt to build toward that idea deliberately.
       </p>
-      <div class="vision-bottom">
-        <p>
-          For an early user, that means finding people who feel relevant without having to expose everything or perform for an audience.
-        </p>
-        <p>
-          For the product, it means resisting shortcuts that turn connection into reach, status or compulsive engagement.
-        </p>
-      </div>
+      <div class="closing-mark"></div>
     </section>
   </main>
 
-  <footer class="shell">
-    <span>OneAnotherHuman · Product overview</span>
-    <span>Privacy-aware by design · Not medical advice</span>
+  <footer>
+    <div class="shell footer-row">
+      <span>OneAnotherHuman · Product overview · Privacy-aware by design · Not medical advice</span>
+      <span class="photo-credit">Photography via Unsplash: Kirill Prikhodko, Patrick Marion, Daria Glakteeva, Vitaly Gariev and Ilya Semenov.</span>
+    </div>
   </footer>
 </body>
 </html>

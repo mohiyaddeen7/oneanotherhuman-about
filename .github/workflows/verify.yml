@@ -15,5 +15,5 @@ jobs:
         uses: actions/checkout@v4
       - name: Verify feature-map contract
         run: node tests/overview-contract.mjs
-      - name: Verify editorial-design contract
-        run: node tests/editorial-design-contract.mjs
+      - name: Verify selected warm photo-led design
+        run: node tests/warm-photo-led-contract.mjs
