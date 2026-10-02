@@ -56,13 +56,13 @@ assert.match(
 );
 assert.match(
   html,
-  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-photo\s*\{[\s\S]*?object-position:\s*74%\s+42%/i,
-  "Phone hero should keep the subjects right of the text and higher in frame",
+  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-photo\s*\{[\s\S]*?object-position:\s*center\s+center/i,
+  "Phone hero should center the dedicated mobile image source",
 );
 assert.match(
   html,
-  /@media\s*\(max-width:\s*480px\)[\s\S]*?\.hero-photo\s*\{[\s\S]*?object-position:\s*76%\s+40%/i,
-  "Narrow phones need a tighter portrait focal point",
+  /@media\s*\(max-width:\s*480px\)[\s\S]*?\.hero-photo\s*\{[\s\S]*?object-position:\s*center\s+center/i,
+  "Narrow phones should preserve the centered mobile source",
 );
 
 
