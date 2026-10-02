@@ -23,14 +23,14 @@ assert.match(
 
 assert.match(
   html,
-  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-actions\s*\{[\s\S]*?display:\s*flex[\s\S]*?justify-content:\s*center/i,
-  "Hero actions should remain compact and centered on phones",
+  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-actions\s*\{[\s\S]*?display:\s*flex[\s\S]*?justify-content:\s*flex-start/i,
+  "Hero action should stay compact and align with the bottom-left hero copy",
 );
 
 assert.match(
   html,
   /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-actions\s+\.btn\s*\{[\s\S]*?width:\s*auto/i,
-  "Hero buttons must not stretch full width on phones",
+  "Hero CTA must not stretch full width on phones",
 );
 
 assert.match(
