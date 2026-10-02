@@ -21,3 +21,5 @@ jobs:
         run: node tests/mobile-responsive-contract.mjs
       - name: Verify screenshot-driven mobile composition
         run: node tests/mobile-composition-contract.mjs
+      - name: Verify how-it-works visual rail
+        run: node tests/how-it-works-rail-contract.mjs

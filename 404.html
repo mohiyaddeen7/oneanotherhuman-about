@@ -201,45 +201,88 @@
       transform:rotate(-2deg);
     }
 
-    .journey {
-      margin-top:52px;
+    .journey-heading-row {
       display:grid;
-      grid-template-columns:repeat(7,1fr);
-      border-top:1px solid #817870;
+      grid-template-columns:auto 1fr;
+      align-items:center;
+      gap:22px;
+    }
+    .journey-heading-row h2 {
+      margin:0;
+      font-size:22px;
+      line-height:1;
+      letter-spacing:-.025em;
+      font-weight:700;
+    }
+    .journey-heading-line {
+      display:block;
+      height:1px;
+      background:#8f8880;
+    }
+    .journey {
+      margin-top:44px;
+      display:flex;
+      align-items:flex-start;
+      overflow:visible;
     }
     .journey-step {
       position:relative;
-      padding:26px 12px 0 0;
-      min-height:154px;
+      flex:1 1 0;
+      min-width:0;
+      padding:0 10px;
+      text-align:center;
     }
-    .journey-step::before {
+    .journey-step::after {
       content:"";
       position:absolute;
-      top:-5px;
-      left:0;
-      width:9px;
-      height:9px;
-      border-radius:50%;
-      background:var(--purple);
-      box-shadow:0 0 0 4px var(--paper);
+      top:22px;
+      left:50%;
+      width:100%;
+      height:1px;
+      background:#aaa29a;
+      z-index:0;
     }
-    .journey-step + .journey-step { padding-left:14px; }
-    .journey-step small {
-      display:block;
-      margin-bottom:9px;
-      color:var(--muted);
-      font-size:10px;
+    .journey-step:last-child::after { display:none; }
+    .journey-icon {
+      position:relative;
+      z-index:1;
+      width:46px;
+      height:46px;
+      margin:0 auto 16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid #878079;
+      border-radius:50%;
+      background:var(--paper);
+      color:#2b2724;
+    }
+    .journey-icon svg {
+      width:18px;
+      height:18px;
+      fill:none;
+      stroke:currentColor;
+      stroke-width:1.7;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+    .journey-step.is-active .journey-icon {
+      color:white;
+      background:var(--purple);
+      border-color:var(--purple);
+      box-shadow:0 0 0 4px rgba(109,67,214,.11);
     }
     .journey-step strong {
       display:block;
-      font-size:12px;
+      font-size:11.5px;
       line-height:1.35;
     }
     .journey-step p {
-      margin:7px 0 0;
+      margin:7px auto 0;
+      max-width:132px;
       color:var(--muted);
-      font-size:10.5px;
-      line-height:1.55;
+      font-size:10px;
+      line-height:1.5;
     }
 
     .platform-head {
@@ -466,35 +509,37 @@
       .section-title { font-size:clamp(2.35rem,8vw,3.7rem); }
       .section-copy { margin-top:16px; font-size:13.5px; }
       .why-grid { grid-template-columns:1fr; gap:24px; }
-      .hand-note { justify-self:start; margin:8px 0 0; font-size:23px; }
+      .hand-note {
+        justify-self:center;
+        margin:24px auto 0;
+        max-width:none;
+        text-align:center;
+        font-size:22px;
+        transform:rotate(-2deg);
+      }
+      .hand-note::after { margin:10px auto 0; width:118px; }
 
+      .journey-heading-row { gap:16px; }
+      .journey-heading-row h2 { font-size:19px; }
       .journey {
-        display:block;
-        grid-template-columns:1fr;
-        border-top:0;
+        display:flex;
+        flex-wrap:wrap;
         overflow:visible;
-        margin-top:38px;
-        padding:0;
+        row-gap:32px;
+        margin-top:34px;
       }
-      .journey-step,
-      .journey-step + .journey-step {
-        display:grid;
-        grid-template-columns:34px 1fr;
-        column-gap:10px;
-        min-height:0;
-        padding:0 0 30px 24px;
-        border-left:1px solid #817870;
+      .journey-step {
+        flex:0 0 25%;
+        min-height:132px;
+        padding:0 7px;
       }
-      .journey-step:last-child { border-left-color:transparent; padding-bottom:0; }
-      .journey-step::before { top:4px; left:-5px; }
-      .journey-step small {
-        grid-column:1;
-        grid-row:1 / span 2;
-        margin:2px 0 0;
-        font-size:10px;
-      }
-      .journey-step strong { grid-column:2; font-size:13px; }
-      .journey-step p { grid-column:2; margin:4px 0 0; font-size:11.5px; }
+      .journey-step:nth-child(n+5) { flex-basis:33.333%; }
+      .journey-step:nth-child(4)::after,
+      .journey-step:nth-child(7)::after { display:none; }
+      .journey-icon { width:42px; height:42px; margin-bottom:12px; }
+      .journey-step::after { top:20px; }
+      .journey-step strong { font-size:11px; }
+      .journey-step p { margin-top:5px; font-size:9.5px; line-height:1.42; }
 
       .platform-head { align-items:flex-start; flex-direction:column; gap:10px; margin-bottom:22px; }
       .feature-grid { grid-template-columns:1fr; gap:34px; }
@@ -532,13 +577,24 @@
       h1 { font-size:clamp(2.25rem,10vw,2.75rem); line-height:1; letter-spacing:-.045em; }
       .hero-break { display:none; }
       .hero-sub { max-width:29rem; margin-top:16px; font-size:13.5px; line-height:1.55; }
-      .hero-actions { display:grid; grid-template-columns:1fr; gap:4px; margin-top:18px; }
-      .hero-actions .btn { width:100%; min-height:40px; }
+      .hero-actions {
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:8px;
+        margin-top:18px;
+      }
+      .hero-actions .btn {
+        width:auto;
+        min-height:38px;
+        padding:0 14px;
+      }
       .hero-actions .btn:not(.primary) {
-        min-height:36px;
+        min-height:38px;
         border:0;
         background:transparent;
         color:#3f3935;
+        padding-inline:8px;
       }
       .hero-photo-wrap { height:clamp(260px,70vw,340px); min-height:0; aspect-ratio:auto; }
 
@@ -548,18 +604,24 @@
       .section-copy { margin-top:14px; font-size:12.5px; line-height:1.68; }
 
       .why-grid { display:block; }
-      .hand-note { display:none; }
-
-      .journey { margin-top:26px; }
-      .journey-step,
-      .journey-step + .journey-step {
-        grid-template-columns:24px 1fr;
-        padding-left:16px;
-        padding-bottom:22px;
+      .hand-note {
+        display:block;
+        margin:22px auto 0;
+        max-width:170px;
+        text-align:center;
+        font-size:20px;
+        line-height:1.1;
+        transform:rotate(-2deg);
       }
-      .journey-step small { font-size:9px; }
-      .journey-step strong { font-size:12px; }
-      .journey-step p { margin-top:3px; font-size:10.5px; line-height:1.45; }
+      .hand-note::after { margin:9px auto 0; width:108px; }
+
+      .journey { margin-top:26px; row-gap:28px; }
+      .journey-step { min-height:122px; padding-inline:5px; }
+      .journey-icon { width:38px; height:38px; margin-bottom:10px; }
+      .journey-icon svg { width:15px; height:15px; }
+      .journey-step::after { top:18px; }
+      .journey-step strong { font-size:10px; }
+      .journey-step p { margin-top:4px; font-size:8.7px; line-height:1.38; }
 
       .platform-head { margin-bottom:18px; }
       .feature-grid { gap:26px; }
@@ -585,14 +647,19 @@
       .future-row p { grid-column:1 / -1; margin-top:4px; font-size:11px; line-height:1.5; }
       .future-row span { grid-column:2; grid-row:1 / 3; align-self:center; font-size:14px; }
 
-      .constraints { grid-template-columns:1fr; margin-top:24px; }
+      .constraints {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        margin-top:24px;
+      }
       .constraint,
       .constraint:nth-child(even) {
-        padding:12px 0;
+        padding:11px 10px;
         border-left:0;
-        font-size:11.5px;
-        line-height:1.4;
+        font-size:10.5px;
+        line-height:1.3;
       }
+      .constraint:nth-child(odd) { padding-left:0; padding-right:12px; }
+      .constraint:nth-child(even) { padding-left:12px; border-left:1px solid var(--line); }
 
       .closing { padding:52px 0 46px; }
       .closing h2 { font-size:clamp(2.25rem,10vw,2.8rem); line-height:1; }
@@ -627,9 +694,9 @@
       .happiness-inner { padding:38px 0; }
       .happiness h2 { font-size:clamp(2.25rem,10.5vw,2.8rem); }
 
-      .constraints { margin-top:22px; }
+      .constraints { margin-top:20px; }
       .constraint,
-      .constraint:nth-child(even) { padding:11px 0; font-size:11px; }
+      .constraint:nth-child(even) { font-size:10px; }
 
       .closing { padding:46px 0 40px; }
       .closing h2 { font-size:clamp(2.1rem,9.8vw,2.55rem); }
@@ -644,9 +711,11 @@
       .hero-sub { font-size:12.5px; }
       .section-title { font-size:1.78rem; }
       .btn { font-size:10.5px; }
+      .hero-actions { gap:5px; }
+      .hero-actions .btn { min-height:36px; padding-inline:11px; }
       .happiness h2 { font-size:2.2rem; }
       .constraint,
-      .constraint:nth-child(even) { font-size:10.5px; }
+      .constraint:nth-child(even) { font-size:9.6px; }
     }
 
     @media (prefers-reduced-motion:reduce) {
@@ -701,31 +770,39 @@
 
     <section id="journey" class="section">
       <div class="shell">
-        <span class="section-label">How it works</span>
-        <h2 class="section-title">How a relationship forms.</h2>
-        <p class="section-copy">The platform is designed as a relationship journey, not a matching event.</p>
+        <div class="journey-heading-row">
+          <h2>How it works</h2>
+          <span class="journey-heading-line" aria-hidden="true"></span>
+        </div>
 
         <div class="journey" aria-label="Relationship journey">
           <article class="journey-step">
-            <small>01</small><strong>Pseudonymous profile</strong><p>Be yourself, not a brand.</p>
+            <span class="journey-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5.5 19c.7-4 3-6 6.5-6s5.8 2 6.5 6"/></svg></span>
+            <strong>Your profile</strong><p>Be yourself, not a brand.</p>
           </article>
           <article class="journey-step">
-            <small>02</small><strong>Discovery</strong><p>Find people through shared context.</p>
+            <span class="journey-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5"/><path d="m14.5 14.5 4 4"/></svg></span>
+            <strong>Discovery</strong><p>Find people through shared context.</p>
           </article>
           <article class="journey-step">
-            <small>03</small><strong>Moment</strong><p>Share a thought, photo or question.</p>
+            <span class="journey-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="5" width="12" height="14" rx="2"/><path d="M9 9h6M9 13h4"/></svg></span>
+            <strong>A Moment</strong><p>Share a thought, photo or question.</p>
           </article>
           <article class="journey-step">
-            <small>04</small><strong>Crossed path</strong><p>See each other again by choice.</p>
+            <span class="journey-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 7c-3 0-4 2-4 5s1 5 4 5c2 0 3-1 4-3 1 2 2 3 4 3 3 0 4-2 4-5s-1-5-4-5c-2 0-3 1-4 3-1-2-2-3-4-3Z"/></svg></span>
+            <strong>Crossed paths</strong><p>See each other again by choice.</p>
           </article>
           <article class="journey-step">
-            <small>05</small><strong>Mutual connection</strong><p>Both show interest privately.</p>
+            <span class="journey-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 19s-7-4.2-7-9a3.7 3.7 0 0 1 6.5-2.5L12 8l.5-.5A3.7 3.7 0 0 1 19 10c0 4.8-7 9-7 9Z"/></svg></span>
+            <strong>Mutual connection</strong><p>Both show interest privately.</p>
           </article>
           <article class="journey-step">
-            <small>06</small><strong>Circle</strong><p>Build a small, meaningful circle.</p>
+            <span class="journey-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><circle cx="16" cy="10" r="2.5"/><path d="M3.5 19c.8-3.3 2.8-5 5.5-5s4.7 1.7 5.5 5M14 15c2.8-.5 4.8.8 6 4"/></svg></span>
+            <strong>Circle</strong><p>Build a small, meaningful circle.</p>
           </article>
-          <article class="journey-step">
-            <small>07</small><strong>Messaging</strong><p>Start a real conversation.</p>
+          <article class="journey-step is-active">
+            <span class="journey-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 6h14v10H9l-4 3V6Z"/><path d="M8 10h8M8 13h5"/></svg></span>
+            <strong>Messaging</strong><p>Start a real conversation.</p>
           </article>
         </div>
       </div>
@@ -842,12 +919,12 @@
         </div>
 
         <div class="constraints">
-          <div class="constraint">No follower-count race</div>
+          <div class="constraint">No follower race</div>
           <div class="constraint">No public compatibility score</div>
-          <div class="constraint">No endless discovery feed</div>
-          <div class="constraint">No cold direct messages</div>
-          <div class="constraint">No public reaction-count competition</div>
-          <div class="constraint">No claim to replace medical or professional support</div>
+          <div class="constraint">No endless people feed</div>
+          <div class="constraint">No cold DMs</div>
+          <div class="constraint">No reaction-count competition</div>
+          <div class="constraint">Not a replacement for professional support</div>
         </div>
       </div>
     </section>

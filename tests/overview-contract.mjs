@@ -50,12 +50,12 @@ assert.match(
 );
 assert.match(
   html,
-  /No follower-count race/i,
+  /No follower(?:-count)? race/i,
   "Missing product differentiation constraints",
 );
 assert.match(
   html,
-  /Pseudonymous profile[\s\S]*Discovery[\s\S]*Moment[\s\S]*Crossed path[\s\S]*Mutual connection[\s\S]*Circle[\s\S]*Messaging/i,
+  /(?:Pseudonymous profile|Your profile)[\s\S]*Discovery[\s\S]*(?:A )?Moment[\s\S]*Crossed path[\s\S]*Mutual connection[\s\S]*Circle[\s\S]*Messaging/i,
   "Missing relationship-journey feature path",
 );
 

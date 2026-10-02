@@ -25,8 +25,8 @@ for (const bp of ["1024px", "768px", "640px", "480px", "360px"]) {
 
 assert.match(
   html,
-  /@media\s*\(max-width:\s*768px\)[\s\S]*?\.journey\s*\{[\s\S]*?grid-template-columns:\s*1fr[\s\S]*?overflow(?:-x)?:\s*visible/i,
-  "Journey must become a vertical, non-horizontal-scrolling layout on mobile",
+  /@media\s*\(max-width:\s*768px\)[\s\S]*?\.journey\s*\{[\s\S]*?display:\s*flex[\s\S]*?flex-wrap:\s*wrap[\s\S]*?overflow(?:-x)?:\s*visible/i,
+  "Journey must wrap into a compact non-scrolling rail on mobile",
 );
 
 assert.match(
@@ -43,8 +43,8 @@ assert.match(
 
 assert.match(
   html,
-  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-actions\s*\{[\s\S]*?(?:display:\s*grid|flex-direction:\s*column)/i,
-  "Hero actions must stack before the narrow-phone range becomes cramped",
+  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-actions\s*\{[\s\S]*?display:\s*flex[\s\S]*?flex-wrap:\s*wrap/i,
+  "Hero actions should wrap compactly rather than stretch on phones",
 );
 
 assert.match(
