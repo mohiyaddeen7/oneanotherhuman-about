@@ -55,7 +55,7 @@ assert.match(
 );
 assert.match(
   html,
-  /Pseudonymous profile[\\s\\S]*Discovery[\\s\\S]*Moment[\\s\\S]*Crossed path[\\s\\S]*Mutual connection[\\s\\S]*Circle[\\s\\S]*Messaging/i,
+  /Pseudonymous profile[\s\S]*Discovery[\s\S]*Moment[\s\S]*Crossed path[\s\S]*Mutual connection[\s\S]*Circle[\s\S]*Messaging/i,
   "Missing relationship-journey feature path",
 );
 
