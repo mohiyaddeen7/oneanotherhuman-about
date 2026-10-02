@@ -17,7 +17,7 @@ assert.match(
 
 assert.match(
   html,
-  /@media\s*\(max-width:\s*640px\)[\s\S]*?h1\s*\{[\s\S]*?font-size:\s*clamp\([^;]*2\.75rem/i,
+  /@media\s*\(max-width:\s*640px\)[\s\S]*?h1\s*\{[\s\S]*?font-size:\s*clamp\([^;]*2\.5rem/i,
   "Phone hero typography must stay restrained",
 );
 

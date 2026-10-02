@@ -37,8 +37,8 @@ assert.match(
 
 assert.match(
   html,
-  /@media\s*\(max-width:\s*480px\)[\s\S]*?h1\s*\{[\s\S]*?font-size:\s*clamp\([^;]*2\.5rem/i,
-  "Mobile hero must stay below the oversized treatment shown in the reported screenshots",
+  /@media\s*\(max-width:\s*480px\)[\s\S]*?h1\s*\{[\s\S]*?font-size:\s*clamp\([^;]*2\.4rem/i,
+  "Mobile hero must stay at or below the calmer 2.4rem cap",
 );
 
 assert.match(

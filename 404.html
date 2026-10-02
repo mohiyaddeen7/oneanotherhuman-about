@@ -75,40 +75,45 @@
     .hero { padding:76px 0 0; }
     .hero-copy {
       text-align:center;
-      max-width:850px;
+      max-width:820px;
       margin:0 auto;
-      padding:0 20px 50px;
-    }
-    .eyebrow {
-      margin:0 0 18px;
-      font-size:10px;
-      font-weight:750;
-      letter-spacing:.2em;
-      text-transform:uppercase;
-      color:var(--purple-dark);
+      padding:0 20px 64px;
     }
     h1 {
       margin:0;
       font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(3.5rem,7.4vw,7.3rem);
-      line-height:.94;
-      letter-spacing:-.06em;
+      font-size:clamp(3.3rem,6.6vw,6.35rem);
+      line-height:.96;
+      letter-spacing:-.055em;
       font-weight:500;
     }
     .hero-sub {
-      max-width:620px;
-      margin:24px auto 0;
-      font-size:16px;
-      line-height:1.7;
+      max-width:600px;
+      margin:22px auto 0;
+      font-size:15px;
+      line-height:1.65;
       color:#514a45;
     }
     .hero-actions {
-      margin-top:28px;
+      margin-top:24px;
       display:flex;
+      align-items:center;
       justify-content:center;
-      gap:10px;
+      gap:16px;
       flex-wrap:wrap;
     }
+    .hero-secondary {
+      display:inline-flex;
+      align-items:center;
+      min-height:36px;
+      padding:0 2px;
+      border-bottom:1px solid rgba(32,28,25,.42);
+      color:#4f4944;
+      font-size:11.5px;
+      font-weight:600;
+      line-height:1;
+    }
+    .hero-secondary:hover { color:var(--ink); border-bottom-color:var(--ink); }
     .btn {
       display:inline-flex;
       min-height:46px;
@@ -479,8 +484,8 @@
     @media (max-width:1024px) {
       .shell { width:min(var(--max), calc(100% - 32px)); }
       .section { padding:82px 0; }
-      .hero { padding-top:64px; }
-      .hero-copy { padding-bottom:42px; }
+      .hero { padding-top:62px; }
+      .hero-copy { padding-bottom:54px; }
       .hero-photo-wrap { height:min(56vw, 500px); min-height:330px; }
       .why-grid { gap:44px; }
       .journey { grid-template-columns:repeat(7,minmax(0,1fr)); }
@@ -498,10 +503,10 @@
       .nav-links a:not(.nav-cta) { display:none; }
       .nav-cta { min-height:36px; padding:0 12px; font-size:10.5px; white-space:nowrap; }
 
-      .hero { padding-top:50px; }
-      .hero-copy { max-width:680px; padding:0 0 34px; }
-      h1 { font-size:clamp(3.2rem,11vw,5rem); }
-      .hero-sub { margin-top:20px; font-size:15px; }
+      .hero { padding-top:46px; }
+      .hero-copy { max-width:650px; padding:0 0 42px; }
+      h1 { font-size:clamp(3rem,10.5vw,4.6rem); }
+      .hero-sub { margin-top:18px; font-size:14.5px; }
       .hero-photo-wrap { height:auto; min-height:0; aspect-ratio:4/3; }
       .hero-photo { object-position:center 56%; }
 
@@ -572,16 +577,16 @@
       .nav-links { display:none; }
 
       .hero { padding-top:30px; }
-      .hero-copy { max-width:34rem; padding:0 0 26px; }
-      .eyebrow { margin-bottom:12px; font-size:8.5px; letter-spacing:.18em; }
-      h1 { font-size:clamp(2.25rem,10vw,2.75rem); line-height:1; letter-spacing:-.045em; }
+      .hero-copy { max-width:33rem; padding:0 0 34px; }
+      h1 { font-size:clamp(2.25rem,9.7vw,2.5rem); line-height:1; letter-spacing:-.045em; }
       .hero-break { display:none; }
-      .hero-sub { max-width:29rem; margin-top:16px; font-size:13.5px; line-height:1.55; }
+      .hero-sub { max-width:28rem; margin-top:15px; font-size:13.25px; line-height:1.5; }
       .hero-actions {
         display:flex;
+        align-items:center;
         justify-content:center;
         flex-wrap:wrap;
-        gap:8px;
+        gap:12px;
         margin-top:18px;
       }
       .hero-actions .btn {
@@ -589,12 +594,9 @@
         min-height:38px;
         padding:0 14px;
       }
-      .hero-actions .btn:not(.primary) {
-        min-height:38px;
-        border:0;
-        background:transparent;
-        color:#3f3935;
-        padding-inline:8px;
+      .hero-secondary {
+        min-height:34px;
+        font-size:11px;
       }
       .hero-photo-wrap { height:clamp(260px,70vw,340px); min-height:0; aspect-ratio:auto; }
 
@@ -673,10 +675,10 @@
     @media (max-width:480px) {
       .shell { width:min(var(--max), calc(100% - 20px)); }
       .hero { padding-top:26px; }
-      .hero-copy { padding-bottom:22px; }
-      h1 { font-size:clamp(2.2rem,10vw,2.5rem); }
-      .hero-sub { font-size:13px; }
-      .hero-actions { margin-top:16px; }
+      .hero-copy { padding-bottom:30px; }
+      h1 { font-size:clamp(2.15rem,9.8vw,2.4rem); }
+      .hero-sub { font-size:12.75px; }
+      .hero-actions { margin-top:16px; gap:10px; }
       .hero-photo-wrap { height:clamp(240px,68vw,310px); }
 
       .section { padding:40px 0; }
@@ -741,12 +743,11 @@
   <main id="top">
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">People over popularity</p>
         <h1>A social network<br class="hero-break" />for being understood.</h1>
         <p class="hero-sub">Meaningful connections. Real conversations. A calmer place to belong.</p>
         <div class="hero-actions">
           <a class="btn primary" href="#journey">See how it works</a>
-          <a class="btn" href="#features">Explore the platform →</a>
+          <a class="hero-secondary" href="#features">Explore the platform →</a>
         </div>
       </div>
       <div class="hero-photo-wrap">
