@@ -41,7 +41,7 @@ assert.match(
 
 assert.match(
   html,
-  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.constraint\s*\{[\s\S]*?padding:\s*1[0-2]px/i,
+  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.constraints\s*\{[\s\S]*?padding:\s*1[0-2]px\s+1[0-2]px/i,
   "Constraint items should have compact mobile padding",
 );
 
