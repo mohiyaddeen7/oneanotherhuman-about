@@ -19,7 +19,7 @@ assert.equal(
   "Feature photography must be unique within What already exists",
 );
 
-for (const bp of ["1024px", "768px", "480px", "360px"]) {
+for (const bp of ["1024px", "768px", "640px", "480px", "360px"]) {
   assert.match(html, new RegExp(`@media\\s*\\(max-width:\\s*${bp.replace(".", "\\.")}\\)`, "i"), `Missing responsive breakpoint ${bp}`);
 }
 
@@ -37,14 +37,14 @@ assert.match(
 
 assert.match(
   html,
-  /@media\s*\(max-width:\s*480px\)[\s\S]*?h1\s*\{[\s\S]*?font-size:\s*clamp\([^;]*3\.25rem/i,
-  "Mobile hero must have a restrained maximum size",
+  /@media\s*\(max-width:\s*480px\)[\s\S]*?h1\s*\{[\s\S]*?font-size:\s*clamp\([^;]*2\.5rem/i,
+  "Mobile hero must stay below the oversized treatment shown in the reported screenshots",
 );
 
 assert.match(
   html,
-  /@media\s*\(max-width:\s*480px\)[\s\S]*?\.hero-actions\s*\{[\s\S]*?(?:display:\s*grid|flex-direction:\s*column)/i,
-  "Hero actions must stack on narrow phones",
+  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-actions\s*\{[\s\S]*?(?:display:\s*grid|flex-direction:\s*column)/i,
+  "Hero actions must stack before the narrow-phone range becomes cramped",
 );
 
 assert.match(

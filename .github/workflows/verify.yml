@@ -17,5 +17,7 @@ jobs:
         run: node tests/overview-contract.mjs
       - name: Verify selected warm photo-led design
         run: node tests/warm-photo-led-contract.mjs
-      - name: Verify mobile responsiveness and unique photography
+      - name: Verify responsive breakpoints and unique photography
         run: node tests/mobile-responsive-contract.mjs
+      - name: Verify screenshot-driven mobile composition
+        run: node tests/mobile-composition-contract.mjs
