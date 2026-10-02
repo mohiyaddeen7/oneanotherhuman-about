@@ -1,0 +1,17 @@
+name: Verify public overview
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Verify feature-map contract
+        run: node tests/overview-contract.mjs
