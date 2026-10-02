@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OneAnotherHuman — A social network for being understood</title>
+  <meta name="description" content="OneAnotherHuman is a privacy-aware social platform designed around meaningful human connection instead of followers, virality, or endless swiping." />
+  <meta name="theme-color" content="#f7f3f8" />
+  <link rel="canonical" href="https://about.oneanotherhuman.com/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="OneAnotherHuman — A social network for being understood" />
+  <meta property="og:description" content="Meaningful human connection through shared context, private mutuality, Moments, and conversations." />
+  <meta property="og:url" content="https://about.oneanotherhuman.com/" />
+  <meta name="twitter:card" content="summary" />
+  <style>
+    :root {
+      --ink: #171717;
+      --muted: rgba(23,23,23,.56);
+      --soft: rgba(23,23,23,.34);
+      --line: rgba(23,23,23,.075);
+      --paper: #fbf9fb;
+      --lav: #8d689f;
+      --lav-soft: #eee5f3;
+      --sage: #7f9b84;
+      --dark: #181718;
+      --radius: 30px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(218,199,228,.45), transparent 28rem),
+        radial-gradient(circle at 88% 25%, rgba(224,234,220,.52), transparent 28rem),
+        linear-gradient(180deg, #fcfbfc 0%, #f8f4f9 48%, #fbfafb 100%);
+    }
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      padding: 16px 0 8px;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(180deg, rgba(251,249,251,.92), rgba(251,249,251,.66), transparent);
+    }
+    .nav-inner {
+      display:flex; align-items:center; justify-content:space-between; gap:20px;
+      border:1px solid rgba(255,255,255,.78);
+      background:rgba(255,255,255,.56);
+      border-radius:22px; padding:11px 12px 11px 14px;
+      box-shadow:0 12px 40px rgba(80,45,100,.05);
+    }
+    .brand { display:flex; align-items:center; gap:11px; min-width:0; }
+    .mark {
+      width:38px; height:38px; display:grid; place-items:center; flex:none;
+      border-radius:14px; background:var(--dark); color:white; font-weight:700;
+      box-shadow:0 8px 20px rgba(0,0,0,.1);
+    }
+    .brand strong { display:block; font-size:14px; letter-spacing:-.02em; }
+    .brand small { display:block; margin-top:2px; font-size:10px; color:var(--soft); }
+    .nav-links { display:flex; align-items:center; gap:5px; }
+    .nav-links a { padding:9px 12px; border-radius:12px; font-size:12px; color:var(--muted); }
+    .nav-links a:hover { background:rgba(255,255,255,.68); color:var(--ink); }
+    .hero { padding:92px 0 60px; }
+    .eyebrow {
+      display:inline-flex; align-items:center; gap:8px; padding:9px 13px;
+      border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.52);
+      color:var(--muted); font-size:11px; font-weight:650; box-shadow:0 8px 28px rgba(80,45,100,.03);
+    }
+    .dot { width:7px; height:7px; border-radius:999px; background:var(--lav); }
+    h1 {
+      margin:24px 0 0; max-width:1000px; font-size:clamp(3.25rem,8vw,7.4rem);
+      line-height:.88; letter-spacing:-.072em; font-weight:700;
+    }
+    h1 span { display:block; color:var(--lav); }
+    .lead {
+      max-width:790px; margin:30px 0 0; color:var(--muted);
+      font-size:clamp(1rem,1.8vw,1.24rem); line-height:1.8;
+    }
+    .hero-actions { margin-top:30px; display:flex; flex-wrap:wrap; gap:10px; }
+    .btn {
+      min-height:48px; display:inline-flex; align-items:center; justify-content:center;
+      padding:0 18px; border-radius:15px; font-size:13px; font-weight:700; border:1px solid var(--line);
+      background:rgba(255,255,255,.58);
+    }
+    .btn.primary { background:var(--dark); color:white; border-color:var(--dark); box-shadow:0 12px 28px rgba(23,23,23,.14); }
+    .btn:hover { transform:translateY(-1px); }
+    .grid-two { display:grid; grid-template-columns:1.08fr .92fr; gap:16px; margin-top:18px; }
+    .card {
+      border:1px solid var(--line); border-radius:var(--radius); padding:30px;
+      background:rgba(255,255,255,.48); backdrop-filter:blur(18px);
+      box-shadow:0 20px 65px rgba(80,45,100,.045);
+    }
+    .card.dark { background:var(--dark); color:white; border-color:rgba(255,255,255,.05); }
+    .kicker { font-size:10px; text-transform:uppercase; letter-spacing:.16em; font-weight:800; color:var(--soft); }
+    .dark .kicker { color:rgba(255,255,255,.34); }
+    h2 { margin:10px 0 0; font-size:clamp(2rem,4vw,3.7rem); line-height:1.02; letter-spacing:-.052em; }
+    h3 { margin:0; font-size:18px; letter-spacing:-.025em; }
+    .copy { margin:18px 0 0; font-size:14px; line-height:1.8; color:var(--muted); }
+    .dark .copy { color:rgba(255,255,255,.58); }
+    .section { padding:86px 0 0; }
+    .section-head { max-width:760px; }
+    .principles { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:28px; }
+    .principle { padding:24px; border:1px solid var(--line); border-radius:25px; background:rgba(255,255,255,.42); }
+    .icon {
+      width:42px; height:42px; display:grid; place-items:center; border-radius:15px;
+      background:var(--lav-soft); color:#765a86; font-weight:800; margin-bottom:18px;
+    }
+    .principle p { margin:10px 0 0; color:var(--muted); font-size:13px; line-height:1.75; }
+    .journey {
+      margin-top:30px; padding:28px; border:1px solid var(--line); border-radius:34px;
+      background:rgba(255,255,255,.34);
+    }
+    .step {
+      display:grid; grid-template-columns:70px 1fr; gap:16px; align-items:start;
+      padding:22px; border-radius:22px; background:rgba(255,255,255,.57); border:1px solid rgba(23,23,23,.045);
+    }
+    .step + .step { margin-top:10px; }
+    .num { color:#9b7aaa; font-size:24px; font-weight:750; letter-spacing:-.04em; }
+    .step p { margin:7px 0 0; color:var(--muted); font-size:13px; line-height:1.7; max-width:760px; }
+    .status-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:30px; }
+    .status { border:1px solid var(--line); border-radius:30px; padding:28px; background:rgba(255,255,255,.48); }
+    .status.future { background:rgba(238,229,243,.72); }
+    .status-label { display:flex; align-items:center; gap:8px; font-size:10px; font-weight:800; letter-spacing:.15em; text-transform:uppercase; color:var(--soft); }
+    .status-label .live { background:var(--sage); }
+    .status ul { list-style:none; padding:0; margin:22px 0 0; display:grid; gap:9px; }
+    .status li { padding:13px 14px; border-radius:16px; background:rgba(255,255,255,.58); color:var(--muted); font-size:13px; line-height:1.55; }
+    .note { margin-top:18px; color:var(--soft); font-size:11px; line-height:1.7; }
+    .not-grid { margin-top:26px; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+    .not { padding:19px; border:1px solid var(--line); border-radius:20px; background:rgba(255,255,255,.38); color:var(--muted); font-size:13px; font-weight:650; }
+    .final { margin-top:88px; padding:44px; border-radius:36px; background:var(--dark); color:white; box-shadow:0 24px 80px rgba(22,22,22,.12); }
+    .final h2 { max-width:930px; }
+    .final p { max-width:760px; color:rgba(255,255,255,.57); line-height:1.8; font-size:14px; }
+    footer { margin-top:26px; padding:26px 0 38px; color:var(--soft); font-size:11px; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    @media (max-width: 850px) {
+      .nav-links a:not(.keep) { display:none; }
+      .hero { padding-top:64px; }
+      .grid-two, .principles, .status-grid, .not-grid { grid-template-columns:1fr; }
+      .journey { padding:14px; }
+      .step { grid-template-columns:48px 1fr; padding:18px; }
+      .card, .status { padding:23px; }
+      .final { padding:28px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      * { transition:none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="shell nav-inner">
+      <a class="brand" href="#top" aria-label="OneAnotherHuman overview home">
+        <span class="mark">O</span>
+        <span><strong>oneanotherhuman</strong><small>A place to feel understood</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Page navigation">
+        <a href="#idea">The idea</a>
+        <a href="#journey">How it works</a>
+        <a href="#current-build">Current build</a>
+        <a class="keep" href="#vision">Vision</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="shell">
+    <section class="hero">
+      <span class="eyebrow"><span class="dot"></span>What is OneAnotherHuman?</span>
+      <h1>A social network for <span>being understood.</span></h1>
+      <p class="lead">
+        OneAnotherHuman is being built for the moments when you do not need a bigger audience.
+        You need the right human being: someone who recognizes a part of what you are living through,
+        without requiring you to turn it into content, popularity, or a perfect profile.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#journey">See how it works</a>
+        <a class="btn" href="#current-build">What exists today</a>
+      </div>
+    </section>
+
+    <section id="idea" class="grid-two" aria-label="Problem and product thesis">
+      <article class="card">
+        <div class="kicker">The problem</div>
+        <h2>Most social products optimize for attention before understanding.</h2>
+        <p class="copy">
+          Mainstream social networks make it easy to reach people but difficult to know who might genuinely
+          understand you. Traditional support spaces can be valuable, but they can also reduce people to a
+          diagnosis, problem, or forum topic. OneAnotherHuman starts somewhere else: shared human context first,
+          relationship second.
+        </p>
+      </article>
+      <article class="card dark">
+        <div class="kicker">The thesis</div>
+        <h2>Meaningful similarity can create a safer first step toward connection.</h2>
+        <p class="copy">
+          Matching signals can help two people cross paths without automatically becoming profile disclosures.
+          Privacy, safety, and connection quality are intended to shape the product mechanics from the beginning,
+          rather than being added after growth.
+        </p>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="kicker">Product philosophy</div>
+        <h2>Connection should emerge, not be forced.</h2>
+      </div>
+      <div class="principles">
+        <article class="principle">
+          <div class="icon">01</div>
+          <h3>Context before contact</h3>
+          <p>People meet through meaningful overlap in journeys, interests, and lived experience instead of cold outreach or random follower growth.</p>
+        </article>
+        <article class="principle">
+          <div class="icon">02</div>
+          <h3>Mutuality before access</h3>
+          <p>A private Keep Crossing Paths action stays silent unless both people independently choose it. Conversation access follows mutual connection.</p>
+        </article>
+        <article class="principle">
+          <div class="icon">03</div>
+          <h3>Depth over reach</h3>
+          <p>Finite discovery, a small personal Circle, and no public popularity race are deliberate choices rather than missing growth mechanics.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="journey" class="section">
+      <div class="section-head">
+        <div class="kicker">The relationship journey</div>
+        <h2>From “someone like me” to someone I actually know.</h2>
+        <p class="copy">The platform is designed as a relationship journey, not a matching event.</p>
+      </div>
+      <div class="journey">
+        <article class="step">
+          <div class="num">01</div>
+          <div><h3>Show only what helps someone understand you</h3><p>Use a pseudonymous public identity and choose which journeys or interests may appear on your profile or contribute to matching.</p></div>
+        </article>
+        <article class="step">
+          <div class="num">02</div>
+          <div><h3>Meet people through meaningful overlap</h3><p>Discovery is finite and privacy-aware rather than an endless ranked people feed built around popularity.</p></div>
+        </article>
+        <article class="step">
+          <div class="num">03</div>
+          <div><h3>Share a Moment, not a performance</h3><p>A Moment can be a short text, photo, or question designed for expression and understanding rather than creator metrics.</p></div>
+        </article>
+        <article class="step">
+          <div class="num">04</div>
+          <div><h3>Let connection build naturally</h3><p>Meaningful interaction can create a crossed path. Either person can privately choose Keep Crossing Paths without sending a visible request.</p></div>
+        </article>
+        <article class="step">
+          <div class="num">05</div>
+          <div><h3>Talk when the connection is mutual</h3><p>When both people independently choose the relationship, private messaging becomes available. A personal Circle stays intentionally small.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="current-build" class="section">
+      <div class="section-head">
+        <div class="kicker">Product status</div>
+        <h2>Built in phases, with current and future work kept separate.</h2>
+      </div>
+      <div class="status-grid">
+        <article class="status">
+          <div class="status-label"><span class="dot live"></span>Current repository-verified build</div>
+          <h3 style="margin-top:16px;font-size:28px">What exists today</h3>
+          <ul>
+            <li>Pseudonymous onboarding, journeys, interests, and privacy-aware matching preferences.</li>
+            <li>Finite discovery based on meaningful shared context rather than public popularity scores.</li>
+            <li>Moments made from text, photos, or questions with bounded interaction.</li>
+            <li>Silent Keep Crossing Paths, mutual relationships, and a personal Circle capped at six.</li>
+            <li>Authorized direct messages with realtime delivery hints, typing state, and recovery behavior.</li>
+          </ul>
+          <p class="note">Repository verification is engineering evidence, not a claim that public production launch and hosted-provider readiness are complete.</p>
+        </article>
+        <article class="status future">
+          <div class="status-label"><span class="dot"></span>In development</div>
+          <h3 style="margin-top:16px;font-size:28px">Happiness</h3>
+          <p class="copy">
+            The next product direction is lightweight, low-pressure shared experiences that give two people
+            something to do together before asking them to carry a conversation. The first approved experience
+            is One Lie, One Question.
+          </p>
+          <div style="margin-top:22px;padding:19px;border:1px solid rgba(255,255,255,.7);border-radius:20px;background:rgba(255,255,255,.48)">
+            <div class="kicker">Why this matters</div>
+            <p style="margin:9px 0 0;font-weight:700;line-height:1.65;color:rgba(23,23,23,.68)">
+              Sometimes the easiest way to connect is not “Tell me about yourself.” It is sharing a small experience first.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="kicker">Deliberate constraints</div>
+        <h2>What OneAnotherHuman is not trying to become.</h2>
+        <p class="copy">Some familiar social mechanics are intentionally absent because they pull the product away from its core purpose.</p>
+      </div>
+      <div class="not-grid">
+        <div class="not">No follower-count race</div>
+        <div class="not">No public compatibility score</div>
+        <div class="not">No endless discovery feed</div>
+        <div class="not">No cold direct messages</div>
+        <div class="not">No public reaction-count competition</div>
+        <div class="not">No claim to replace medical or professional support</div>
+      </div>
+    </section>
+
+    <section id="vision" class="final">
+      <div class="kicker">The long-term idea</div>
+      <h2>Build a place where a meaningful relationship is a better success metric than another minute of attention.</h2>
+      <p>
+        For an early user, that means finding people who feel relevant without having to expose everything.
+        For the product, it means resisting shortcuts that turn connection into reach, status, or compulsive engagement.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="#top" style="background:white;color:#171717;border-color:white">Read from the top</a>
+        <a class="btn" href="#current-build" style="color:white;border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.06)">See current build</a>
+      </div>
+    </section>
+
+    <footer>
+      <span>OneAnotherHuman · Product overview</span>
+      <span>Privacy-aware by design · Not medical advice</span>
+    </footer>
+  </main>
+</body>
+</html>
