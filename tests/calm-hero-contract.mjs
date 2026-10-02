@@ -43,4 +43,26 @@ assert.match(
   "Mobile hero needs an explicit portrait crop",
 );
 
+
+assert.match(
+  html,
+  /\.hero-photo\s*\{[\s\S]*?object-position:\s*72%\s+46%/i,
+  "Desktop hero should place the subjects to the right and slightly higher",
+);
+assert.match(
+  html,
+  /@media\s*\(max-width:\s*768px\)[\s\S]*?\.hero-photo\s*\{[\s\S]*?object-position:\s*70%\s+44%/i,
+  "Tablet hero should use its own focal point",
+);
+assert.match(
+  html,
+  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-photo\s*\{[\s\S]*?object-position:\s*74%\s+42%/i,
+  "Phone hero should keep the subjects right of the text and higher in frame",
+);
+assert.match(
+  html,
+  /@media\s*\(max-width:\s*480px\)[\s\S]*?\.hero-photo\s*\{[\s\S]*?object-position:\s*76%\s+40%/i,
+  "Narrow phones need a tighter portrait focal point",
+);
+
 console.log("cinematic hero contract: pass");
