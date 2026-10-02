@@ -41,7 +41,7 @@ assert.match(
 
 assert.match(
   html,
-  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.constraint\s*\{[\s\S]*?padding:\s*1[0-3]px\s+0/i,
+  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.constraint\s*,\s*\.constraint:nth-child\(even\)\s*\{[\s\S]*?padding:\s*1[0-3]px\s+0/i,
   "Constraint rows should be compact on phones",
 );
 
