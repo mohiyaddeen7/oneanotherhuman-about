@@ -43,8 +43,8 @@ assert.match(
 
 assert.match(
   html,
-  /@media\s*\(max-width:\s*480px\)[\s\S]*?\.hero-actions\s*\{[\s\S]*?(?:display:\s*grid|flex-direction:\s*column)/i,
-  "Hero actions must stack on narrow phones",
+  /@media\s*\(max-width:\s*640px\)[\s\S]*?\.hero-actions\s*\{[\s\S]*?(?:display:\s*grid|flex-direction:\s*column)/i,
+  "Hero actions must stack before the narrow-phone range becomes cramped",
 );
 
 assert.match(
